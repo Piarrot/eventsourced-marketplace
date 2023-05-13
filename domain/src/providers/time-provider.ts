@@ -1,3 +1,3 @@
 export interface ITimeProvider {
-    currentTimestamp(): Promise<number>;
+    currentTimestamp(): number;
 }

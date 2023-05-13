@@ -18,10 +18,13 @@ export const Result = {
     isError<T, E>(result: Result<T, E>): result is Error<E> {
         return (<any>result).error !== undefined;
     },
-    isValue<T, E>(result: Result<T, E>): result is Value<T> {
+    isSuccess<T, E>(result: Result<T, E>): result is Value<T> {
         return (<any>result).value !== undefined;
     },
     unwrap<T>(result: Value<T>): T {
         return result.value;
+    },
+    unwrapError<E>(result: Error<E>): E {
+        return result.error;
     },
 };

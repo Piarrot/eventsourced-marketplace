@@ -5,7 +5,7 @@ import {
     UserRegisteredEventType,
 } from "../../events/user-registered";
 import { Result } from "../../utils/result";
-import { EMAIL_ALREADY_REGISTERED, ERRORS } from "../../errors/errors";
+import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors/errors";
 import { IUsersProvider } from "../../providers/aggregate-stores/users-provider";
 
 export interface RegisterUserCommandPayload {
@@ -24,7 +24,7 @@ export interface RegisterUserCommandContext {
 export async function RegisterUser(
     payload: RegisterUserCommandPayload,
     context: RegisterUserCommandContext
-): Promise<Result<UserRegisteredEvent, EMAIL_ALREADY_REGISTERED>> {
+): Promise<Result<UserRegisteredEvent, EMAIL_ALREADY_REGISTERED_ERROR>> {
     if (await context.users.isEmailRegistered(payload.email)) {
         return Result.fromError(ERRORS.EMAIL_ALREADY_REGISTERED);
     }
@@ -39,6 +39,6 @@ export async function RegisterUser(
             ),
             profilePicture: payload.profilePicture,
         },
-        timestamp: await context.time.currentTimestamp(),
+        timestamp: context.time.currentTimestamp(),
     });
 }

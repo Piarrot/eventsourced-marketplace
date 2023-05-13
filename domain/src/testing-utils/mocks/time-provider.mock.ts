@@ -2,7 +2,7 @@ import { ITimeProvider } from "../../providers/time-provider";
 
 export class TimeProviderMock implements ITimeProvider {
     currentTimestamp() {
-        return Promise.resolve(this.timestamp);
+        return this.timestamp;
     }
 
     /// Mocking utilities

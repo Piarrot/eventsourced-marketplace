@@ -3,7 +3,7 @@ import { Result } from "./result";
 describe("Result", () => {
     test("given a value, it should return true for isValue", () => {
         const result = Result.fromValue("value");
-        expect(Result.isValue(result)).toBe(true);
+        expect(Result.isSuccess(result)).toBe(true);
     });
     test("given an error, it should return true for isError", () => {
         const result = Result.fromError("error");

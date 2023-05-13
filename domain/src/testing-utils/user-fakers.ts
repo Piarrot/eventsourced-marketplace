@@ -7,8 +7,7 @@ export function createValidUser(opts?: Partial<User>): User {
         id: randomizedHash,
         email: opts?.email ?? `test-email${randomizedHash}@email.com`,
         name: opts?.name ?? `John Doe ${randomizedHash}`,
-        hashedPassword:
-            opts?.hashedPassword ?? `hashed-password-${randomizedHash}`,
+        hashedPassword: opts?.hashedPassword ?? `hashed-${randomizedHash}`,
         profilePicture: `profile-picture-${randomizedHash}`,
         registeredAt: Date.now(),
         lastUpdate: Date.now(),

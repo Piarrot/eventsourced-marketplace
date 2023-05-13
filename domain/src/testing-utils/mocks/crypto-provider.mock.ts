@@ -1,3 +1,4 @@
+import { User } from "../../entities/user-entity";
 import { ICryptoProvider } from "../../providers/crypto-provider";
 
 export class CryptoProviderMock implements ICryptoProvider {
@@ -10,6 +11,10 @@ export class CryptoProviderMock implements ICryptoProvider {
     }
     async verifyPassword(plainPassword: string, hash: string) {
         return `hashed-${plainPassword}` === hash;
+    }
+
+    async generateJWT(user: User): Promise<string> {
+        return "JWT-" + user.email + "-" + user.id + "-mock";
     }
 
     /// Mocking utilities

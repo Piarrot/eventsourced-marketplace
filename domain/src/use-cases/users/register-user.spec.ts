@@ -1,4 +1,4 @@
-import { EMAIL_ALREADY_REGISTERED, ERRORS } from "../../errors/errors";
+import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors/errors";
 import {
     UserRegisteredEvent,
     UserRegisteredEventType,
@@ -49,8 +49,10 @@ describe("Register User", () => {
         const context = getDefaultContext();
         context.users.addUsers([createValidUser({ email: payload.email })]);
         //when
-        const result: Result<UserRegisteredEvent, EMAIL_ALREADY_REGISTERED> =
-            await RegisterUser(payload, context);
+        const result: Result<
+            UserRegisteredEvent,
+            EMAIL_ALREADY_REGISTERED_ERROR
+        > = await RegisterUser(payload, context);
         //then
         if (Result.isError(result)) {
             expect(result.error).toEqual(ERRORS.EMAIL_ALREADY_REGISTERED);

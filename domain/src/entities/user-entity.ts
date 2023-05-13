@@ -5,7 +5,7 @@ export interface User {
     profilePicture: string;
     hashedPassword: string;
     registeredAt: number;
-    lastUpdate: number;
+    lastUpdate?: number;
 
     cart?: Cart;
 }

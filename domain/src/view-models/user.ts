@@ -4,5 +4,5 @@ export interface UserViewModel {
     email: string;
     profilePicture: string;
     registeredAt: number;
-    lastUpdate: number;
+    lastUpdate?: number;
 }
