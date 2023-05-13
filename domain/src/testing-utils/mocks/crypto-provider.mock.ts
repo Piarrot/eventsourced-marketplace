@@ -1,0 +1,21 @@
+import { ICryptoProvider } from "../../providers/crypto-provider";
+
+export class CryptoProviderMock implements ICryptoProvider {
+    async hashPassword(plainPassword: string) {
+        return `hashed-${plainPassword}`;
+    }
+    async newUUID() {
+        this.lastId++;
+        return "uuid-" + this.lastId + "-mock";
+    }
+    async verifyPassword(plainPassword: string, hash: string) {
+        return `hashed-${plainPassword}` === hash;
+    }
+
+    /// Mocking utilities
+    private lastId: number = 0;
+
+    getLastId() {
+        return "uuid-" + this.lastId + "-mock";
+    }
+}
