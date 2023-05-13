@@ -3,7 +3,8 @@ import { Product } from "../entities/product-entity";
 
 export function createValidProduct(
     ownerId: string,
-    categoryIds?: string[]
+    categoryIds?: string[],
+    images?: string[]
 ): Product {
     const randomizedHash = randomUUID();
     return {
@@ -18,5 +19,6 @@ export function createValidProduct(
         createdAt: Date.now(),
         lastUpdate: Date.now(),
         categoryIds: categoryIds ?? [],
+        images: images ?? [],
     };
 }

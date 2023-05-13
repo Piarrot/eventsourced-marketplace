@@ -8,11 +8,12 @@ export interface Product {
     discount: number;
 
     published: boolean;
-    publicationChangedAt: number;
+    publicationChangedAt?: number;
 
     createdAt: number;
-    lastUpdate: number;
+    lastUpdate?: number;
 
     ownerId: string;
     categoryIds: string[];
+    images: string[];
 }
