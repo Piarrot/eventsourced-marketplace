@@ -1,4 +1,5 @@
 import { ERRORS } from "../../errors/errors";
+import { LoginEventType } from "../../events/user-logged-in";
 import { getDefaultContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { Result } from "../../utils/result";
@@ -22,12 +23,13 @@ describe("Login User", () => {
         if (Result.isError(result)) throw new Error("should not be an error");
         const event = Result.unwrap(result);
         expect(event).toEqual({
-            type: "user-logged-in",
+            token: "JWT-" + user.email + "-" + user.id + "-mock",
+        });
+        expect(context.eventStore.getEventStream(LoginEventType)[0]).toEqual({
+            type: LoginEventType,
             userId: user.id,
             timestamp: context.time.currentTimestamp(),
-            payload: {
-                token: "JWT-" + user.email + "-" + user.id + "-mock",
-            },
+            payload: undefined,
         });
     });
 

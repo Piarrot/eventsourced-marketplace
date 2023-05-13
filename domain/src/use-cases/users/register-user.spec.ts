@@ -1,8 +1,5 @@
-import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors/errors";
-import {
-    UserRegisteredEvent,
-    UserRegisteredEventType,
-} from "../../events/user-registered";
+import { ERRORS } from "../../errors/errors";
+import { UserRegisteredEventType } from "../../events/user-registered";
 import { Result } from "../../utils/result";
 import { getDefaultContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
@@ -25,16 +22,25 @@ describe("Register User", () => {
             fail("Expected a value");
         }
 
-        const userEvent = Result.unwrap(result);
-        expect(userEvent.type).toEqual(UserRegisteredEventType);
-        expect(userEvent.userId).toEqual(context.crypto.getLastId());
-        expect(userEvent.payload).toEqual({
-            name: payload.name,
-            email: payload.email,
-            hashedPassword: await context.crypto.hashPassword(
-                payload.plainPassword
-            ),
-            profilePicture: payload.profilePicture,
+        const response = Result.unwrap(result);
+        expect(response).toEqual({
+            result: "success",
+        });
+
+        expect(
+            context.eventStore.getEventStream(UserRegisteredEventType)[0]
+        ).toEqual({
+            type: UserRegisteredEventType,
+            userId: context.crypto.getLastId(),
+            timestamp: context.time.currentTimestamp(),
+            payload: {
+                name: payload.name,
+                email: payload.email,
+                hashedPassword: await context.crypto.hashPassword(
+                    payload.plainPassword
+                ),
+                profilePicture: payload.profilePicture,
+            },
         });
     });
 
@@ -49,10 +55,7 @@ describe("Register User", () => {
         const context = getDefaultContext();
         context.users.addUsers([createValidUser({ email: payload.email })]);
         //when
-        const result: Result<
-            UserRegisteredEvent,
-            EMAIL_ALREADY_REGISTERED_ERROR
-        > = await RegisterUser(payload, context);
+        const result = await RegisterUser(payload, context);
         //then
         if (Result.isError(result)) {
             expect(result.error).toEqual(ERRORS.EMAIL_ALREADY_REGISTERED);

@@ -11,7 +11,7 @@ describe("UserRegistered", () => {
                 name: "John Doe",
                 email: "test@email.com",
                 hashedPassword: "123456",
-                profilePicture: "https://www.google.com",
+                profilePicture: "profile-picture",
             },
             timestamp: 123456,
         };

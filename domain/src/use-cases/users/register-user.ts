@@ -7,6 +7,7 @@ import {
 import { Result } from "../../utils/result";
 import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors/errors";
 import { IUsersProvider } from "../../providers/aggregate-stores/users-provider";
+import { IEventStore } from "../../providers/event-store";
 
 export interface RegisterUserCommandPayload {
     name: string;
@@ -19,16 +20,22 @@ export interface RegisterUserCommandContext {
     time: ITimeProvider;
     crypto: ICryptoProvider;
     users: IUsersProvider;
+    eventStore: IEventStore;
+}
+
+export interface RegisterUserResponseModel {
+    result: "success";
 }
 
 export async function RegisterUser(
     payload: RegisterUserCommandPayload,
     context: RegisterUserCommandContext
-): Promise<Result<UserRegisteredEvent, EMAIL_ALREADY_REGISTERED_ERROR>> {
+): Promise<Result<RegisterUserResponseModel, EMAIL_ALREADY_REGISTERED_ERROR>> {
     if (await context.users.isEmailRegistered(payload.email)) {
         return Result.fromError(ERRORS.EMAIL_ALREADY_REGISTERED);
     }
-    return Result.fromValue({
+
+    await context.eventStore.publish<UserRegisteredEvent>({
         type: UserRegisteredEventType,
         userId: await context.crypto.newUUID(),
         payload: {
@@ -40,5 +47,9 @@ export async function RegisterUser(
             profilePicture: payload.profilePicture,
         },
         timestamp: context.time.currentTimestamp(),
+    });
+
+    return Result.fromValue({
+        result: "success",
     });
 }
