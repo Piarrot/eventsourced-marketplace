@@ -1,8 +1,8 @@
 import { Product } from "../../entities/product-entity";
-import { IProductProvider } from "../../providers/aggregate-stores/product-provider";
-import { IProductsStore } from "../../providers/aggregate-stores/products-store";
+import { IProductsProvider } from "../../providers/products-provider";
+import { IProductsStore } from "../../providers/products-store";
 
-export class ProductProviderMock implements IProductProvider, IProductsStore {
+export class ProductProviderMock implements IProductsProvider, IProductsStore {
     getProductsByOwner(ownerId: string) {
         return Promise.resolve(
             this.products.filter((p) => p.ownerId === ownerId)

@@ -1,6 +1,6 @@
 import { User } from "../../entities/user-entity";
-import { IUsersProvider } from "../../providers/aggregate-stores/users-provider";
-import { IUsersSnapshotStore } from "../../providers/aggregate-stores/users-store";
+import { IUsersProvider } from "../../providers/users-provider";
+import { IUsersSnapshotStore } from "../../providers/users-store";
 
 export class UserProviderMock implements IUsersProvider, IUsersSnapshotStore {
     async getByEmail(email: string): Promise<User | undefined> {

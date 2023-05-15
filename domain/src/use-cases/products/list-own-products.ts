@@ -1,9 +1,9 @@
 import { Product } from "../../entities/product-entity";
 import { User } from "../../entities/user-entity";
-import { IProductProvider } from "../../providers/aggregate-stores/product-provider";
+import { IProductsProvider } from "../../providers/products-provider";
 
 export interface ListOwnProductsContext {
-    products: IProductProvider;
+    products: IProductsProvider;
     currentUser: User;
 }
 

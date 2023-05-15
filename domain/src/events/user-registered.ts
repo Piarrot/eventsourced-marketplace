@@ -1,4 +1,4 @@
-import { IUsersSnapshotStore } from "../providers/aggregate-stores/users-store";
+import { IUsersSnapshotStore } from "../providers/users-store";
 import { Event } from "../utils/event";
 
 export const UserRegisteredEventType = "user-registered" as const;

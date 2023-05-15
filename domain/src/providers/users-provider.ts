@@ -1,4 +1,4 @@
-import { User } from "../../entities/user-entity";
+import { User } from "../entities/user-entity";
 
 export interface IUsersProvider {
     getByEmail(email: string): Promise<User | undefined>;

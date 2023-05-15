@@ -1,4 +1,4 @@
-import { IProductsStore } from "../../providers/aggregate-stores/products-store";
+import { IProductsStore } from "../../providers/products-store";
 import { PRODUCT_CREATED_EVENT, ProductEvent } from "./product-events";
 
 export type ProductCreatedEvent = ProductEvent<
