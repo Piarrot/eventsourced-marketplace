@@ -28,7 +28,7 @@ export async function Login(
 ): Promise<Result<LoginResponseModel, INVALID_CREDENTIALS_ERROR>> {
     const foundUser = await context.users.getByEmail(payload.email);
     if (!foundUser) {
-        return Result.fromError(ERRORS.INVALID_CREDENTIALS);
+        return Result.fail(ERRORS.INVALID_CREDENTIALS);
     }
     if (
         !(await context.crypto.verifyPassword(
@@ -36,7 +36,7 @@ export async function Login(
             foundUser.hashedPassword
         ))
     ) {
-        return Result.fromError(ERRORS.INVALID_CREDENTIALS);
+        return Result.fail(ERRORS.INVALID_CREDENTIALS);
     }
 
     const token = await context.crypto.generateJWT(foundUser);
@@ -48,7 +48,7 @@ export async function Login(
         payload: undefined,
     });
 
-    return Result.fromValue({
+    return Result.ok({
         token,
     });
 }

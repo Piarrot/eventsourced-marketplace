@@ -1,4 +1,4 @@
-import { getDefaultContext } from "../testing-utils/default-testing-context";
+import { createTestingContext } from "../testing-utils/default-testing-context";
 import { UserRegisteredEvent, applyUserRegistered } from "./user-registered";
 
 describe("UserRegistered", () => {
@@ -15,7 +15,7 @@ describe("UserRegistered", () => {
             },
             timestamp: 123456,
         };
-        const context = getDefaultContext();
+        const context = createTestingContext();
 
         // when
         await applyUserRegistered(event, context);

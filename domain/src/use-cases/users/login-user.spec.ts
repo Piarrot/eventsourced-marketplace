@@ -1,6 +1,6 @@
 import { ERRORS } from "../../errors/errors";
 import { LoginEventType } from "../../events/user-logged-in";
-import { getDefaultContext } from "../../testing-utils/default-testing-context";
+import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { Result } from "../../utils/result";
 import { Login } from "./login-user";
@@ -13,7 +13,7 @@ describe("Login User", () => {
             email: user.email,
             password: user.id, // by default, the password is the user id
         };
-        const context = getDefaultContext();
+        const context = createTestingContext();
         context.users.addUsers([user]);
 
         // when
@@ -39,7 +39,7 @@ describe("Login User", () => {
             email: "not-registered-email",
             password: "not-registered-password",
         };
-        const context = getDefaultContext();
+        const context = createTestingContext();
 
         // when
         const result = await Login(payload, context);
@@ -58,7 +58,7 @@ describe("Login User", () => {
             email: user.email,
             password: "invalid-password",
         };
-        const context = getDefaultContext();
+        const context = createTestingContext();
         context.users.addUsers([user]);
 
         // when

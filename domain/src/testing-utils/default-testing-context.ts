@@ -12,7 +12,7 @@ interface DefaultTestingContext {
     eventStore: EventStoreMock;
 }
 
-export const getDefaultContext = (): DefaultTestingContext => ({
+export const createTestingContext = (): DefaultTestingContext => ({
     time: new TimeProviderMock(),
     crypto: new CryptoProviderMock(),
     products: new ProductProviderMock(),

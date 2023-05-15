@@ -1,15 +1,16 @@
-import { getDefaultContext } from "../testing-utils/default-testing-context";
+import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { ApplyProductCreated, ProductCreatedEvent } from "./product-created";
+import { PRODUCT_EVENTS } from "./product-events";
 
 describe("Product Created Event", () => {
     test("Given a Created Event should store a new product", async () => {
         //given
         const event: ProductCreatedEvent = {
-            type: "product-created",
+            type: PRODUCT_EVENTS.PRODUCT_CREATED,
             userId: "user-id",
             timestamp: Date.now(),
+            productId: "product-id",
             payload: {
-                id: "product-id",
                 name: "product-name",
                 price: 100,
                 discount: 10,
@@ -19,7 +20,7 @@ describe("Product Created Event", () => {
             },
         };
 
-        const context = getDefaultContext();
+        const context = createTestingContext();
 
         //when
         await ApplyProductCreated(event, context);

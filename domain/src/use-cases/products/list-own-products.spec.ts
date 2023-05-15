@@ -1,4 +1,4 @@
-import { getDefaultContext } from "../../testing-utils/default-testing-context";
+import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidProduct } from "../../testing-utils/product-fakers";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { ListOwnProducts } from "./list-own-products";
@@ -6,7 +6,7 @@ import { ListOwnProducts } from "./list-own-products";
 describe("List Owned Products", () => {
     test("given a user without products it should return an empty array", async () => {
         //given
-        const context = getDefaultContext();
+        const context = createTestingContext();
         const currentUser = createValidUser();
 
         const otherUser = createValidUser();
@@ -28,7 +28,7 @@ describe("List Owned Products", () => {
 
     test("given a user with products it should return an array with the products", async () => {
         //given
-        const context = getDefaultContext();
+        const context = createTestingContext();
         const currentUser = createValidUser();
 
         const otherUser = createValidUser();

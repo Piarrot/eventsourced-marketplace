@@ -1,5 +1,6 @@
 import { User } from "../../entities/user-entity";
-import { ProductCreatedEvent } from "../../events/product-created";
+import { ProductCreatedEvent } from "../../events/products/product-created";
+import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { ICryptoProvider } from "../../providers/crypto-provider";
 import { IEventStore } from "../../providers/event-store";
 import { ITimeProvider } from "../../providers/time-provider";
@@ -32,11 +33,11 @@ export async function CreateProduct(
     const { name, price, discount, description, images, categoryIds } = payload;
 
     const event: ProductCreatedEvent = {
-        type: "product-created",
+        type: PRODUCT_EVENTS.PRODUCT_CREATED,
         userId: currentUser.id,
         timestamp: time.currentTimestamp(),
+        productId: await crypto.newUUID(),
         payload: {
-            id: await crypto.newUUID(),
             name,
             price,
             discount,
@@ -49,6 +50,6 @@ export async function CreateProduct(
     await eventStore.publish(event);
 
     return {
-        productId: event.payload.id,
+        productId: event.productId,
     };
 }

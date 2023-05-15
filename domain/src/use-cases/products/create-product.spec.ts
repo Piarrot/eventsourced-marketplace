@@ -1,5 +1,5 @@
-import { ProductCreatedEventType } from "../../events/product-created";
-import { getDefaultContext } from "../../testing-utils/default-testing-context";
+import { PRODUCT_EVENTS } from "../../events/products/product-events";
+import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { CreateProduct } from "./create-product";
 
@@ -14,7 +14,7 @@ describe("Create Product", () => {
             images: ["image1", "image2"],
             categoryIds: ["category1", "category2"],
         };
-        const context = getDefaultContext();
+        const context = createTestingContext();
         const currentUser = createValidUser();
 
         //when
@@ -26,13 +26,13 @@ describe("Create Product", () => {
         //then
         expect(result.productId).toBeDefined();
         expect(
-            context.eventStore.getEventStream(ProductCreatedEventType)[0]
+            context.eventStore.getEventStream(PRODUCT_EVENTS.PRODUCT_CREATED)[0]
         ).toEqual({
-            type: ProductCreatedEventType,
+            type: PRODUCT_EVENTS.PRODUCT_CREATED,
             userId: currentUser.id,
             timestamp: context.time.currentTimestamp(),
+            productId: result.productId,
             payload: {
-                id: result.productId,
                 name: payload.name,
                 price: payload.price,
                 discount: payload.discount,

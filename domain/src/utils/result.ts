@@ -9,10 +9,10 @@ export interface Value<T> {
 }
 
 export const Result = {
-    fromError<E>(error: E): Error<E> {
+    fail<E>(error: E): Error<E> {
         return { error };
     },
-    fromValue<T>(value: T): Value<T> {
+    ok<T>(value: T): Value<T> {
         return { value };
     },
     isError<T, E>(result: Result<T, E>): result is Error<E> {

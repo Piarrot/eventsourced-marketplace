@@ -1,13 +1,9 @@
-import { IProductsStore } from "../providers/aggregate-stores/products-store";
-import { Event } from "../utils/event";
+import { IProductsStore } from "../../providers/aggregate-stores/products-store";
+import { PRODUCT_CREATED_EVENT, ProductEvent } from "./product-events";
 
-export const ProductCreatedEventType = "product-created";
-export type ProductCreatedEventType = typeof ProductCreatedEventType;
-
-export type ProductCreatedEvent = Event<
-    ProductCreatedEventType,
+export type ProductCreatedEvent = ProductEvent<
+    PRODUCT_CREATED_EVENT,
     {
-        id: string;
         name: string;
         price: number;
         discount: number;
@@ -26,11 +22,11 @@ export async function ApplyProductCreated(
     context: ProductCreatedContext
 ): Promise<void> {
     const { products } = context;
-    const { id, name, price, discount, description, images, categoryIds } =
+    const { name, price, discount, description, images, categoryIds } =
         event.payload;
 
     await products.create({
-        id,
+        id: event.productId,
         name,
         price,
         discount,

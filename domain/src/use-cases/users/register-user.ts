@@ -32,7 +32,7 @@ export async function RegisterUser(
     context: RegisterUserCommandContext
 ): Promise<Result<RegisterUserResponseModel, EMAIL_ALREADY_REGISTERED_ERROR>> {
     if (await context.users.isEmailRegistered(payload.email)) {
-        return Result.fromError(ERRORS.EMAIL_ALREADY_REGISTERED);
+        return Result.fail(ERRORS.EMAIL_ALREADY_REGISTERED);
     }
 
     await context.eventStore.publish<UserRegisteredEvent>({
@@ -49,7 +49,7 @@ export async function RegisterUser(
         timestamp: context.time.currentTimestamp(),
     });
 
-    return Result.fromValue({
+    return Result.ok({
         result: "success",
     });
 }

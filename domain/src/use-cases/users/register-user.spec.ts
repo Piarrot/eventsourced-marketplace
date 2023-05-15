@@ -1,7 +1,7 @@
 import { ERRORS } from "../../errors/errors";
 import { UserRegisteredEventType } from "../../events/user-registered";
 import { Result } from "../../utils/result";
-import { getDefaultContext } from "../../testing-utils/default-testing-context";
+import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { RegisterUser } from "./register-user";
 
@@ -14,7 +14,7 @@ describe("Register User", () => {
             plainPassword: "password",
             profilePicture: "profile-picture",
         };
-        const context = getDefaultContext();
+        const context = createTestingContext();
         //when
         const result = await RegisterUser(payload, context);
         //then
@@ -52,7 +52,7 @@ describe("Register User", () => {
             plainPassword: "password",
             profilePicture: "profile-picture",
         };
-        const context = getDefaultContext();
+        const context = createTestingContext();
         context.users.addUsers([createValidUser({ email: payload.email })]);
         //when
         const result = await RegisterUser(payload, context);
