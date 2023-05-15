@@ -1,4 +1,4 @@
-import { Product } from "../../entities/product-entity";
+import { Product } from "../../entities/product";
 import { IProductsProvider } from "../../providers/products-provider";
 import { IProductsStore } from "../../providers/products-store";
 

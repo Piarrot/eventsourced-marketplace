@@ -1,5 +1,5 @@
-import { Product } from "../../entities/product-entity";
-import { User } from "../../entities/user-entity";
+import { Product } from "../../entities/product";
+import { User } from "../../entities/user";
 import { IProductsProvider } from "../../providers/products-provider";
 
 export interface ListOwnProductsContext {

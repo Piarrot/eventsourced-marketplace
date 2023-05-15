@@ -1,4 +1,4 @@
-import { User } from "../../entities/user-entity";
+import { User } from "../../entities/user";
 import { ICryptoProvider } from "../../providers/crypto-provider";
 
 export class CryptoProviderMock implements ICryptoProvider {

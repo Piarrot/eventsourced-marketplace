@@ -1,4 +1,4 @@
-export interface ProductViewModel {
+export interface ProductResponseModel {
     id: string;
     name: string;
     price: number;
@@ -10,7 +10,7 @@ export interface ProductViewModel {
     publicationChangedAt: number;
 
     createdAt: number;
-    lastUpdate: number;
+    lastUpdate?: number;
 
     categories: string[];
 }

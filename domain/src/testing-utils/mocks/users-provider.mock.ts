@@ -1,4 +1,4 @@
-import { User } from "../../entities/user-entity";
+import { User } from "../../entities/user";
 import { IUsersProvider } from "../../providers/users-provider";
 import { IUsersSnapshotStore } from "../../providers/users-store";
 

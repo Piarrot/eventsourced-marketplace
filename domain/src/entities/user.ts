@@ -7,15 +7,10 @@ export interface User {
     registeredAt: number;
     lastUpdate?: number;
 
-    cart?: Cart;
+    cart?: CartProduct[];
 }
 
-export interface Cart {
-    products: [
-        {
-            productId: string;
-            quantity: number;
-        }
-    ];
-    fullPrice: number;
+export interface CartProduct {
+    productId: string;
+    quantity: number;
 }

@@ -1,4 +1,4 @@
-import { User } from "../../entities/user-entity";
+import { User } from "../../entities/user";
 import { ProductCreatedEvent } from "../../events/products/product-created";
 import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { ICryptoProvider } from "../../providers/crypto-provider";

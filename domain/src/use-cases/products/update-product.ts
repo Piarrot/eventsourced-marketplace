@@ -1,5 +1,5 @@
-import { Product } from "../../entities/product-entity";
-import { User } from "../../entities/user-entity";
+import { Product } from "../../entities/product";
+import { User } from "../../entities/user";
 import { ERRORS, PERMISSION_DENIED_ERROR } from "../../errors/errors";
 import { EVENTS } from "../../events";
 import { ProductUpdatedEvent } from "../../events/products/product-updated";

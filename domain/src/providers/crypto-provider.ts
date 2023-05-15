@@ -1,4 +1,4 @@
-import { User } from "../entities/user-entity";
+import { User } from "../entities/user";
 
 export interface ICryptoProvider {
     hashPassword(password: string): Promise<string>;
