@@ -1,6 +1,5 @@
 import { ERRORS } from "../../errors/errors";
 import { UserRegisteredEventType } from "../../events/user-registered";
-import { Result } from "../../utils/result";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { RegisterUser } from "./register-user";

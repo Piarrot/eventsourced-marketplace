@@ -1,4 +1,5 @@
 import { IEventStore } from "../../providers/event-store";
+import { deepClone } from "../../utils/cloning";
 import { Event } from "../../utils/event";
 
 export class EventStoreMock implements IEventStore {
@@ -6,7 +7,7 @@ export class EventStoreMock implements IEventStore {
         if (!this.events.has(event.type)) {
             this.events.set(event.type, []);
         }
-        this.events.get(event.type)!.push(event);
+        this.events.get(event.type)!.push(deepClone(event));
     }
     /// Mocking utilities
     events = new Map<string, Event<string, any>[]>();

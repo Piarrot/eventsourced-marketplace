@@ -26,9 +26,10 @@ describe("Product Updated Event", () => {
         await ApplyProductUpdated(event, context);
 
         // then
-        expect(context.products.getById(product.id)).toEqual({
+        expect(await context.products.getById(product.id)).toEqual({
             ...product,
             ...event.payload,
+            lastUpdate: event.timestamp,
         });
     });
 });

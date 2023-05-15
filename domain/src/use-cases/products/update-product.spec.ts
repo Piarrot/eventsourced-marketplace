@@ -3,23 +3,23 @@ import { createTestingContext } from "../../testing-utils/default-testing-contex
 import { createValidProduct } from "../../testing-utils/product-fakers";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { CommandResponse } from "../../utils/command-response";
-import { Result } from "../../utils/result";
 import { UpdateProductUseCase } from "./update-product";
 
 describe("Update Product Use Case", () => {
     test("Given a valid payload should update it", async () => {
         // given
-        const payload = {
-            price: 100,
-            name: "new name",
-        };
         const currentUser = createValidUser();
         const product = createValidProduct(currentUser.id);
         const context = createTestingContext();
+        const payload = {
+            id: product.id,
+            price: 100,
+            name: "new name",
+        };
         context.products.addProducts([product]);
 
         // when
-        const result = await UpdateProductUseCase(product, payload, {
+        const result = await UpdateProductUseCase(payload, {
             currentUser,
             ...context,
         });
@@ -45,17 +45,18 @@ describe("Update Product Use Case", () => {
 
     test("Given a payload with product owner different from current user should return permission denied error", async () => {
         // given
+        const currentUser = createValidUser();
+        const product = createValidProduct("another-user-id");
         const payload = {
+            id: product.id,
             price: 100,
             name: "new name",
         };
-        const currentUser = createValidUser();
-        const product = createValidProduct("another-user-id");
         const context = createTestingContext();
         context.products.addProducts([product]);
 
         // when
-        const result = await UpdateProductUseCase(product, payload, {
+        const result = await UpdateProductUseCase(payload, {
             currentUser,
             ...context,
         });

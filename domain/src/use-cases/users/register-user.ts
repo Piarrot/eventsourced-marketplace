@@ -4,7 +4,6 @@ import {
     UserRegisteredEvent,
     UserRegisteredEventType,
 } from "../../events/user-registered";
-import { Result } from "../../utils/result";
 import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors/errors";
 import { IUsersProvider } from "../../providers/users-provider";
 import { IEventStore } from "../../providers/event-store";
