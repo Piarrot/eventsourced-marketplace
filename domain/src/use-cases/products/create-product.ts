@@ -4,6 +4,7 @@ import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { ICryptoProvider } from "../../providers/crypto-provider";
 import { IEventStore } from "../../providers/event-store";
 import { ITimeProvider } from "../../providers/time-provider";
+import { CommandResponse } from "../../utils/command-response";
 
 export interface CreateProductPayload {
     name: string;
@@ -21,14 +22,10 @@ export interface CreateProductContext {
     time: ITimeProvider;
 }
 
-export interface CreateProductResponseModel {
-    productId: string;
-}
-
 export async function CreateProduct(
     payload: CreateProductPayload,
     context: CreateProductContext
-): Promise<CreateProductResponseModel> {
+): Promise<CommandResponse<never>> {
     const { currentUser, eventStore, crypto, time } = context;
     const { name, price, discount, description, images, categoryIds } = payload;
 
@@ -49,7 +46,5 @@ export async function CreateProduct(
 
     await eventStore.publish(event);
 
-    return {
-        productId: event.productId,
-    };
+    return CommandResponse.success();
 }

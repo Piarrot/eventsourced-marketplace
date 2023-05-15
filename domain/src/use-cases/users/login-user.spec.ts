@@ -2,7 +2,7 @@ import { ERRORS } from "../../errors/errors";
 import { LoginEventType } from "../../events/user-logged-in";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
-import { Result } from "../../utils/result";
+import { QueryResponse } from "../../utils/query-response";
 import { Login } from "./login-user";
 
 describe("Login User", () => {
@@ -20,9 +20,10 @@ describe("Login User", () => {
         const result = await Login(payload, context);
 
         // then
-        if (Result.isError(result)) throw new Error("should not be an error");
-        const event = Result.unwrap(result);
-        expect(event).toEqual({
+        if (QueryResponse.isFailure(result))
+            throw new Error("should not be an error");
+        const data = result.data;
+        expect(data).toEqual({
             token: "JWT-" + user.email + "-" + user.id + "-mock",
         });
         expect(context.eventStore.getEventStream(LoginEventType)[0]).toEqual({
@@ -45,10 +46,10 @@ describe("Login User", () => {
         const result = await Login(payload, context);
 
         // then
-        if (Result.isSuccess(result))
+        if (QueryResponse.isSuccess(result))
             throw new Error("should not be a success");
 
-        expect(Result.unwrapError(result)).toEqual(ERRORS.INVALID_CREDENTIALS);
+        expect(result.error).toEqual(ERRORS.INVALID_CREDENTIALS);
     });
 
     test("given an invalid password, it should return an error", async () => {
@@ -65,9 +66,9 @@ describe("Login User", () => {
         const result = await Login(payload, context);
 
         // then
-        if (Result.isSuccess(result))
+        if (QueryResponse.isSuccess(result))
             throw new Error("should not be a success");
 
-        expect(Result.unwrapError(result)).toEqual(ERRORS.INVALID_CREDENTIALS);
+        expect(result.error).toEqual(ERRORS.INVALID_CREDENTIALS);
     });
 });

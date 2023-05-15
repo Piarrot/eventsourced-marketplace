@@ -5,6 +5,7 @@ import { EVENTS } from "../../events";
 import { ProductUpdatedEvent } from "../../events/products/product-updated";
 import { IEventStore } from "../../providers/event-store";
 import { ITimeProvider } from "../../providers/time-provider";
+import { CommandResponse } from "../../utils/command-response";
 import { Result } from "../../utils/result";
 
 export interface UpdateProductContext {
@@ -22,17 +23,13 @@ export interface UpdateProductPayload {
     categoryIds?: string[];
 }
 
-export interface UpdateProductResponse {
-    success: true;
-}
-
 export async function UpdateProductUseCase(
     product: Product,
     payload: UpdateProductPayload,
     context: UpdateProductContext
-): Promise<Result<UpdateProductResponse, PERMISSION_DENIED_ERROR>> {
+): Promise<CommandResponse<PERMISSION_DENIED_ERROR>> {
     if (product.ownerId !== context.currentUser.id) {
-        return Result.fail(ERRORS.PERMISSION_DENIED);
+        return CommandResponse.failure(ERRORS.PERMISSION_DENIED);
     }
 
     await context.eventStore.publish<ProductUpdatedEvent>({
@@ -43,7 +40,5 @@ export async function UpdateProductUseCase(
         payload,
     });
 
-    return Result.ok({
-        success: true,
-    });
+    return CommandResponse.success();
 }

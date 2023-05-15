@@ -8,6 +8,7 @@ import { Result } from "../../utils/result";
 import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors/errors";
 import { IUsersProvider } from "../../providers/users-provider";
 import { IEventStore } from "../../providers/event-store";
+import { CommandResponse } from "../../utils/command-response";
 
 export interface RegisterUserCommandPayload {
     name: string;
@@ -30,9 +31,9 @@ export interface RegisterUserResponseModel {
 export async function RegisterUser(
     payload: RegisterUserCommandPayload,
     context: RegisterUserCommandContext
-): Promise<Result<RegisterUserResponseModel, EMAIL_ALREADY_REGISTERED_ERROR>> {
+): Promise<CommandResponse<EMAIL_ALREADY_REGISTERED_ERROR>> {
     if (await context.users.isEmailRegistered(payload.email)) {
-        return Result.fail(ERRORS.EMAIL_ALREADY_REGISTERED);
+        return CommandResponse.failure(ERRORS.EMAIL_ALREADY_REGISTERED);
     }
 
     await context.eventStore.publish<UserRegisteredEvent>({
@@ -49,7 +50,5 @@ export async function RegisterUser(
         timestamp: context.time.currentTimestamp(),
     });
 
-    return Result.ok({
-        result: "success",
-    });
+    return CommandResponse.success();
 }

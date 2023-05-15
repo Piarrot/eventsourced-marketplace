@@ -4,7 +4,7 @@ import { IUsersProvider } from "../../providers/users-provider";
 import { ICryptoProvider } from "../../providers/crypto-provider";
 import { IEventStore } from "../../providers/event-store";
 import { ITimeProvider } from "../../providers/time-provider";
-import { Result } from "../../utils/result";
+import { QueryResponse } from "../../utils/query-response";
 
 export interface LoginContext {
     users: IUsersProvider;
@@ -25,10 +25,10 @@ export interface LoginResponseModel {
 export async function Login(
     payload: LoginPayload,
     context: LoginContext
-): Promise<Result<LoginResponseModel, INVALID_CREDENTIALS_ERROR>> {
+): Promise<QueryResponse<LoginResponseModel, INVALID_CREDENTIALS_ERROR>> {
     const foundUser = await context.users.getByEmail(payload.email);
     if (!foundUser) {
-        return Result.fail(ERRORS.INVALID_CREDENTIALS);
+        return QueryResponse.failure(ERRORS.INVALID_CREDENTIALS);
     }
     if (
         !(await context.crypto.verifyPassword(
@@ -36,7 +36,7 @@ export async function Login(
             foundUser.hashedPassword
         ))
     ) {
-        return Result.fail(ERRORS.INVALID_CREDENTIALS);
+        return QueryResponse.failure(ERRORS.INVALID_CREDENTIALS);
     }
 
     const token = await context.crypto.generateJWT(foundUser);
@@ -48,7 +48,5 @@ export async function Login(
         payload: undefined,
     });
 
-    return Result.ok({
-        token,
-    });
+    return QueryResponse.success({ token });
 }

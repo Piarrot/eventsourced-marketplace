@@ -4,6 +4,7 @@ import { Result } from "../../utils/result";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { RegisterUser } from "./register-user";
+import { CommandResponse } from "../../utils/command-response";
 
 describe("Register User", () => {
     test("given some valid credentials, it should emit the correct event", async () => {
@@ -18,14 +19,11 @@ describe("Register User", () => {
         //when
         const result = await RegisterUser(payload, context);
         //then
-        if (Result.isError(result)) {
+        if (CommandResponse.isFailure(result)) {
             fail("Expected a value");
         }
 
-        const response = Result.unwrap(result);
-        expect(response).toEqual({
-            result: "success",
-        });
+        expect(result.success).toEqual(true);
 
         expect(
             context.eventStore.getEventStream(UserRegisteredEventType)[0]
@@ -57,7 +55,7 @@ describe("Register User", () => {
         //when
         const result = await RegisterUser(payload, context);
         //then
-        if (Result.isError(result)) {
+        if (CommandResponse.isFailure(result)) {
             expect(result.error).toEqual(ERRORS.EMAIL_ALREADY_REGISTERED);
         } else {
             fail("Expected an error");

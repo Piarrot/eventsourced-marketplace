@@ -1,6 +1,7 @@
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidProduct } from "../../testing-utils/product-fakers";
 import { createValidUser } from "../../testing-utils/user-fakers";
+import { QueryResponse } from "../../utils/query-response";
 import { ListOwnProducts } from "./list-own-products";
 
 describe("List Owned Products", () => {
@@ -17,12 +18,16 @@ describe("List Owned Products", () => {
         ]);
 
         //when
-        const products = await ListOwnProducts({
+        const response = await ListOwnProducts({
             ...context,
             currentUser,
         });
 
         //then
+        if (QueryResponse.isFailure(response)) {
+            throw new Error("Should not fail");
+        }
+        const products = response.data;
         expect(products).toEqual([]);
     });
 
@@ -43,12 +48,16 @@ describe("List Owned Products", () => {
         ]);
 
         //when
-        const products = await ListOwnProducts({
+        const response = await ListOwnProducts({
             ...context,
             currentUser,
         });
 
         //then
+        if (QueryResponse.isFailure(response)) {
+            throw new Error("Should not fail");
+        }
+        const products = response.data;
         expect(products).toHaveLength(2);
         expect(
             products.every((product) => product.ownerId === currentUser.id)

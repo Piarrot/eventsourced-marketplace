@@ -1,6 +1,7 @@
 import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
+import { CommandResponse } from "../../utils/command-response";
 import { CreateProduct } from "./create-product";
 
 describe("Create Product", () => {
@@ -24,14 +25,16 @@ describe("Create Product", () => {
         });
 
         //then
-        expect(result.productId).toBeDefined();
+        if (CommandResponse.isFailure(result)) {
+            throw new Error("Should not fail");
+        }
         expect(
             context.eventStore.getEventStream(PRODUCT_EVENTS.PRODUCT_CREATED)[0]
         ).toEqual({
             type: PRODUCT_EVENTS.PRODUCT_CREATED,
             userId: currentUser.id,
             timestamp: context.time.currentTimestamp(),
-            productId: result.productId,
+            productId: expect.any(String),
             payload: {
                 name: payload.name,
                 price: payload.price,
