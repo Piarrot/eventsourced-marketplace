@@ -1,11 +1,9 @@
-import { IUsersSnapshotStore } from "../providers/users-store";
-import { Event } from "../utils/event";
-
-export const UserRegisteredEventType = "user-registered" as const;
-export type UserRegisteredEventType = typeof UserRegisteredEventType;
+import { IUsersSnapshotStore } from "../../providers/users-store";
+import { Event } from "../../utils/event";
+import { USER_CREATED_EVENT } from "./user-events";
 
 export type UserRegisteredEvent = Event<
-    UserRegisteredEventType,
+    USER_CREATED_EVENT,
     {
         name: string;
         email: string;
@@ -18,7 +16,7 @@ export interface UserRegisteredContext {
     users: IUsersSnapshotStore;
 }
 
-export async function applyUserRegistered(
+export async function ApplyUserRegistered(
     event: UserRegisteredEvent,
     context: UserRegisteredContext
 ): Promise<void> {

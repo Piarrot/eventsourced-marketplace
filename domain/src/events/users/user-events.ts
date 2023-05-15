@@ -1,0 +1,7 @@
+export const USER_EVENTS = {
+    USER_CREATED: "USER_CREATED",
+    USER_LOGGED_IN: "USER_LOGGED_IN",
+} as const;
+
+export type USER_CREATED_EVENT = typeof USER_EVENTS.USER_CREATED;
+export type USER_LOGGED_IN = typeof USER_EVENTS.USER_LOGGED_IN;

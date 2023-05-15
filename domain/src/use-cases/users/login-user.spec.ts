@@ -1,5 +1,5 @@
 import { ERRORS } from "../../errors/errors";
-import { LoginEventType } from "../../events/user-logged-in";
+import { LoginEventType } from "../../events/users/user-logged-in";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { QueryResponse } from "../../utils/query-response";
@@ -30,7 +30,7 @@ describe("Login User", () => {
             type: LoginEventType,
             userId: user.id,
             timestamp: context.time.currentTimestamp(),
-            payload: undefined,
+            payload: {},
         });
     });
 

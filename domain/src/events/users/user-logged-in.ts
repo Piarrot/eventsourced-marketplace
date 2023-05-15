@@ -1,5 +1,5 @@
-import { Event } from "../utils/event";
+import { Event } from "../../utils/event";
 
 export const LoginEventType = "user-logged-in" as const;
 export type LoginEventType = typeof LoginEventType;
-export type LoginEvent = Event<LoginEventType, undefined>;
+export type LoginEvent = Event<LoginEventType, {}>;

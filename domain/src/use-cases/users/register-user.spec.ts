@@ -1,9 +1,9 @@
 import { ERRORS } from "../../errors/errors";
-import { UserRegisteredEventType } from "../../events/user-registered";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { RegisterUser } from "./register-user";
 import { CommandResponse } from "../../utils/command-response";
+import { USER_EVENTS } from "../../events/users/user-events";
 
 describe("Register User", () => {
     test("given some valid credentials, it should emit the correct event", async () => {
@@ -25,9 +25,9 @@ describe("Register User", () => {
         expect(result.success).toEqual(true);
 
         expect(
-            context.eventStore.getEventStream(UserRegisteredEventType)[0]
+            context.eventStore.getEventStream(USER_EVENTS.USER_CREATED)[0]
         ).toEqual({
-            type: UserRegisteredEventType,
+            type: USER_EVENTS.USER_CREATED,
             userId: context.crypto.getLastId(),
             timestamp: context.time.currentTimestamp(),
             payload: {

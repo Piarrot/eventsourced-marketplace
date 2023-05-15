@@ -1,3 +1,4 @@
+import { ERRORS } from "../../errors/errors";
 import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidProduct } from "../../testing-utils/product-fakers";
@@ -67,5 +68,28 @@ describe("Update Product Use Case", () => {
             throw new Error("Should not be success");
         }
         expect(result.error).toBe("PERMISSION_DENIED");
+    });
+
+    test("Given a payload with invalid product id should return invalid product error", async () => {
+        // given
+        const currentUser = createValidUser();
+        const payload = {
+            id: "invalid-product-id",
+            price: 100,
+            name: "new name",
+        };
+        const context = createTestingContext();
+
+        // when
+        const result = await UpdateProductUseCase(payload, {
+            currentUser,
+            ...context,
+        });
+
+        // then
+        if (CommandResponse.isSuccess(result)) {
+            throw new Error("Should not be success");
+        }
+        expect(result.error).toBe(ERRORS.INVALID_PRODUCT);
     });
 });

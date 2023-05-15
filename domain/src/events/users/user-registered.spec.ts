@@ -1,11 +1,12 @@
-import { createTestingContext } from "../testing-utils/default-testing-context";
-import { UserRegisteredEvent, applyUserRegistered } from "./user-registered";
+import { createTestingContext } from "../../testing-utils/default-testing-context";
+import { USER_EVENTS } from "./user-events";
+import { UserRegisteredEvent, ApplyUserRegistered } from "./user-registered";
 
 describe("UserRegistered", () => {
     test("given an event it should create a new user entity", async () => {
         // given
         const event: UserRegisteredEvent = {
-            type: "user-registered",
+            type: USER_EVENTS.USER_CREATED,
             userId: "123",
             payload: {
                 name: "John Doe",
@@ -18,7 +19,7 @@ describe("UserRegistered", () => {
         const context = createTestingContext();
 
         // when
-        await applyUserRegistered(event, context);
+        await ApplyUserRegistered(event, context);
 
         // then
         const user = await context.users.getByEmail(event.payload.email);
