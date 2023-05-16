@@ -1,7 +1,7 @@
 import { ICryptoProvider } from "../../providers/crypto-provider";
 import { ITimeProvider } from "../../providers/time-provider";
 import { UserRegisteredEvent } from "../../events/users/user-registered";
-import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors/errors";
+import { EMAIL_ALREADY_REGISTERED_ERROR, ERRORS } from "../../errors";
 import { IUsersProvider } from "../../providers/users-provider";
 import { IEventStore } from "../../providers/event-store";
 import { CommandResponse } from "../../utils/command-response";

@@ -1,5 +1,5 @@
 {
-    "name": "domain",
+    "name": "mercadoliebre-domain",
     "packageManager": "yarn@3.5.1",
     "devDependencies": {
         "@types/jest": "npm:^29.5.1",
@@ -8,6 +8,11 @@
         "typescript": "npm:^5.0.4"
     },
     "scripts": {
-        "test": "jest"
-    }
+        "test": "jest",
+        "build": "tsc"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "dist/index.js"
 }

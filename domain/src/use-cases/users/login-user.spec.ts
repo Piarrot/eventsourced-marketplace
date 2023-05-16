@@ -1,4 +1,4 @@
-import { ERRORS } from "../../errors/errors";
+import { ERRORS } from "../../errors";
 import { LoginEventType } from "../../events/users/user-logged-in";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";

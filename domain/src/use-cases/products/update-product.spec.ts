@@ -1,4 +1,4 @@
-import { ERRORS } from "../../errors/errors";
+import { ERRORS } from "../../errors";
 import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidProduct } from "../../testing-utils/product-fakers";

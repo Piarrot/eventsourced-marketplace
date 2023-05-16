@@ -50,3 +50,6 @@ export const EventApplyMap: Record<
     PRODUCT_PUBLISHED: ApplyProductPublishedEvent,
     PRODUCT_UNPUBLISHED: undefined,
 };
+
+export * from "./users";
+export * from "./products";

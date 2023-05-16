@@ -1,4 +1,4 @@
-import { ERRORS, INVALID_CREDENTIALS_ERROR } from "../../errors/errors";
+import { ERRORS, INVALID_CREDENTIALS_ERROR } from "../../errors";
 import { LoginEvent, LoginEventType } from "../../events/users/user-logged-in";
 import { IUsersProvider } from "../../providers/users-provider";
 import { ICryptoProvider } from "../../providers/crypto-provider";

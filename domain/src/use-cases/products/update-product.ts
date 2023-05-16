@@ -3,7 +3,7 @@ import {
     ERRORS,
     INVALID_PRODUCT_ERROR,
     PERMISSION_DENIED_ERROR,
-} from "../../errors/errors";
+} from "../../errors";
 import { EVENTS } from "../../events";
 import { ProductUpdatedEvent } from "../../events/products/product-updated";
 import { IEventStore } from "../../providers/event-store";
