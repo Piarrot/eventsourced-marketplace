@@ -4,16 +4,8 @@ import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { ICryptoProvider } from "../../providers/crypto-provider";
 import { IEventStore } from "../../providers/event-store";
 import { ITimeProvider } from "../../providers/time-provider";
+import { CreateProductPayload } from "../../request-models/create-product-payload";
 import { CommandResponse } from "../../utils/command-response";
-
-export interface CreateProductPayload {
-    name: string;
-    price: number;
-    discount: number;
-    description: string;
-    images: string[];
-    categoryIds: string[];
-}
 
 export interface CreateProductContext {
     currentUser: User;
@@ -22,7 +14,7 @@ export interface CreateProductContext {
     time: ITimeProvider;
 }
 
-export async function CreateProduct(
+export async function CreateProductUseCase(
     payload: CreateProductPayload,
     context: CreateProductContext
 ): Promise<CommandResponse<never>> {

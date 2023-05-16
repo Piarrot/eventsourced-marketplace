@@ -3,7 +3,7 @@ import { LoginEventType } from "../../events/users/user-logged-in";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { QueryResponse } from "../../utils/query-response";
-import { Login } from "./login-user";
+import { LoginUser } from "./login-user";
 
 describe("Login User", () => {
     test("given the user is registered and a valid payload, it should return a login event", async () => {
@@ -17,7 +17,7 @@ describe("Login User", () => {
         context.users.addUsers([user]);
 
         // when
-        const result = await Login(payload, context);
+        const result = await LoginUser(payload, context);
 
         // then
         if (QueryResponse.isFailure(result))
@@ -43,7 +43,7 @@ describe("Login User", () => {
         const context = createTestingContext();
 
         // when
-        const result = await Login(payload, context);
+        const result = await LoginUser(payload, context);
 
         // then
         if (QueryResponse.isSuccess(result))
@@ -63,7 +63,7 @@ describe("Login User", () => {
         context.users.addUsers([user]);
 
         // when
-        const result = await Login(payload, context);
+        const result = await LoginUser(payload, context);
 
         // then
         if (QueryResponse.isSuccess(result))

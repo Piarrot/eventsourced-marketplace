@@ -1,7 +1,7 @@
 import { ERRORS } from "../../errors/errors";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
-import { RegisterUser } from "./register-user";
+import { RegisterUserUseCase } from "./register-user";
 import { CommandResponse } from "../../utils/command-response";
 import { USER_EVENTS } from "../../events/users/user-events";
 
@@ -16,7 +16,7 @@ describe("Register User", () => {
         };
         const context = createTestingContext();
         //when
-        const result = await RegisterUser(payload, context);
+        const result = await RegisterUserUseCase(payload, context);
         //then
         if (CommandResponse.isFailure(result)) {
             fail("Expected a value");
@@ -52,7 +52,7 @@ describe("Register User", () => {
         const context = createTestingContext();
         context.users.addUsers([createValidUser({ email: payload.email })]);
         //when
-        const result = await RegisterUser(payload, context);
+        const result = await RegisterUserUseCase(payload, context);
         //then
         if (CommandResponse.isFailure(result)) {
             expect(result.error).toEqual(ERRORS.EMAIL_ALREADY_REGISTERED);

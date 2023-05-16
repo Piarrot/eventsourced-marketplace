@@ -9,6 +9,7 @@ import { ProductUpdatedEvent } from "../../events/products/product-updated";
 import { IEventStore } from "../../providers/event-store";
 import { IProductsProvider } from "../../providers/products-provider";
 import { ITimeProvider } from "../../providers/time-provider";
+import { UpdateProductPayload } from "../../request-models/update-product-payload";
 import { CommandResponse } from "../../utils/command-response";
 
 export interface UpdateProductContext {
@@ -16,16 +17,6 @@ export interface UpdateProductContext {
     eventStore: IEventStore;
     currentUser: User;
     products: IProductsProvider;
-}
-
-export interface UpdateProductPayload {
-    id: string;
-    name?: string;
-    price?: number;
-    discount?: number;
-    description?: string;
-    images?: string[];
-    categoryIds?: string[];
 }
 
 export async function UpdateProductUseCase(

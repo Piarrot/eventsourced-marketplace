@@ -5,6 +5,9 @@ import { ICryptoProvider } from "../../providers/crypto-provider";
 import { IEventStore } from "../../providers/event-store";
 import { ITimeProvider } from "../../providers/time-provider";
 import { QueryResponse } from "../../utils/query-response";
+import { QueryUseCase } from "../../utils/use-cases";
+import { LoginToken } from "../../response-models/login-token";
+import { LoginCredentials } from "../../request-models/login-credentials";
 
 export interface LoginContext {
     users: IUsersProvider;
@@ -12,20 +15,12 @@ export interface LoginContext {
     time: ITimeProvider;
     eventStore: IEventStore;
 }
-
-export interface LoginPayload {
-    email: string;
-    password: string;
-}
-
-export interface LoginResponseModel {
-    token: string;
-}
-
-export async function Login(
-    payload: LoginPayload,
-    context: LoginContext
-): Promise<QueryResponse<LoginResponseModel, INVALID_CREDENTIALS_ERROR>> {
+export const LoginUser: QueryUseCase<
+    LoginCredentials,
+    LoginContext,
+    LoginToken,
+    INVALID_CREDENTIALS_ERROR
+> = async (payload, context) => {
     const foundUser = await context.users.getByEmail(payload.email);
     if (!foundUser) {
         return QueryResponse.failure(ERRORS.INVALID_CREDENTIALS);
@@ -49,4 +44,4 @@ export async function Login(
     });
 
     return QueryResponse.success({ token });
-}
+};

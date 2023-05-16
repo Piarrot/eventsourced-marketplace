@@ -8,7 +8,8 @@ export interface ListOwnProductsContext {
     currentUser: User;
 }
 
-export async function ListOwnProducts(
+export async function ListOwnProductsUseCase(
+    payload: undefined,
     context: ListOwnProductsContext
 ): Promise<QueryResponse<Product[], never>> {
     return QueryResponse.success(

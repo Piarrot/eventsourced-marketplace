@@ -2,7 +2,7 @@ import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { CommandResponse } from "../../utils/command-response";
-import { CreateProduct } from "./create-product";
+import { CreateProductUseCase } from "./create-product";
 
 describe("Create Product", () => {
     test("given a valid payload, it should create a product", async () => {
@@ -19,7 +19,7 @@ describe("Create Product", () => {
         const currentUser = createValidUser();
 
         //when
-        const result = await CreateProduct(payload, {
+        const result = await CreateProductUseCase(payload, {
             ...context,
             currentUser,
         });

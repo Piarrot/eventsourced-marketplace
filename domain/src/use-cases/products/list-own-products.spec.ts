@@ -2,7 +2,7 @@ import { createTestingContext } from "../../testing-utils/default-testing-contex
 import { createValidProduct } from "../../testing-utils/product-fakers";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { QueryResponse } from "../../utils/query-response";
-import { ListOwnProducts } from "./list-own-products";
+import { ListOwnProductsUseCase } from "./list-own-products";
 
 describe("List Owned Products", () => {
     test("given a user without products it should return an empty array", async () => {
@@ -18,7 +18,7 @@ describe("List Owned Products", () => {
         ]);
 
         //when
-        const response = await ListOwnProducts({
+        const response = await ListOwnProductsUseCase(undefined, {
             ...context,
             currentUser,
         });
@@ -48,7 +48,7 @@ describe("List Owned Products", () => {
         ]);
 
         //when
-        const response = await ListOwnProducts({
+        const response = await ListOwnProductsUseCase(undefined, {
             ...context,
             currentUser,
         });
