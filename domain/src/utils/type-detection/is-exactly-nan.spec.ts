@@ -1,4 +1,4 @@
-import { isExactlyNaN } from "./is-exactly-nan";
+import { isExactlyNaN } from "./is-exactly-nan.js";
 
 describe("Is Exactly NaN", () => {
     test("Given a numeric value, should return false", () => {

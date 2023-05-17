@@ -1,4 +1,4 @@
-import { ResultRecord, parseEmail, parseString } from "..";
+import { ResultRecord, parseEmail, parseString } from "../index.js";
 
 export interface LoginCredentials {
     email: string;

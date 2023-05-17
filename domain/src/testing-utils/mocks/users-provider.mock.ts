@@ -1,7 +1,7 @@
-import { User } from "../../entities/user";
-import { IUsersProvider } from "../../providers/users-provider";
-import { IUsersStore } from "../../providers/users-store";
-import { deepClone } from "../../utils/cloning";
+import { User } from "../../entities/user.js";
+import { IUsersProvider } from "../../providers/users-provider.js";
+import { IUsersStore } from "../../providers/users-store.js";
+import { deepClone } from "../../utils/cloning/index.js";
 
 export class UserProviderMock implements IUsersProvider, IUsersStore {
     async getByEmail(email: string): Promise<User | undefined> {

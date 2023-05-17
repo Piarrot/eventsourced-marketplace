@@ -1,9 +1,9 @@
-import { ApplyProductCreated } from "./products/product-created";
-import { PRODUCT_EVENTS } from "./products/product-events";
-import { ApplyProductPublishedEvent } from "./products/product-published";
-import { ApplyProductUpdated } from "./products/product-updated";
-import { ApplyUserRegistered } from "./users/user-registered";
-import { USER_EVENTS } from "./users/user-events";
+import { ApplyProductCreated } from "./products/product-created.js";
+import { PRODUCT_EVENTS } from "./products/product-events.js";
+import { ApplyProductPublishedEvent } from "./products/product-published.js";
+import { ApplyProductUpdated } from "./products/product-updated.js";
+import { ApplyUserRegistered } from "./users/user-registered.js";
+import { USER_EVENTS } from "./users/user-events.js";
 
 export const EVENTS = {
     // USER
@@ -51,5 +51,5 @@ export const EventApplyMap: Record<
     PRODUCT_UNPUBLISHED: undefined,
 };
 
-export * from "./users";
-export * from "./products";
+export * from "./users/index.js";
+export * from "./products/index.js";

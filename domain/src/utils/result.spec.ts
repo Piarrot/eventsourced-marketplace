@@ -1,4 +1,4 @@
-import { Result } from "./result";
+import { Result } from "./result.js";
 
 describe("Result", () => {
     test("given a value, it should return true for isValue", () => {

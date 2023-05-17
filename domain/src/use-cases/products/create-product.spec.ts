@@ -1,8 +1,8 @@
-import { PRODUCT_EVENTS } from "../../events/products/product-events";
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { createValidUser } from "../../testing-utils/user-fakers";
-import { CommandResponse } from "../../utils/command-response";
-import { CreateProductUseCase } from "./create-product";
+import { PRODUCT_EVENTS } from "../../events/products/product-events.js";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { createValidUser } from "../../testing-utils/user-fakers.js";
+import { CommandResponse } from "../../utils/command-response.js";
+import { CreateProductUseCase } from "./create-product.js";
 
 describe("Create Product", () => {
     test("given a valid payload, it should create a product", async () => {

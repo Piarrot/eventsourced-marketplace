@@ -1,9 +1,9 @@
-import { DOMAIN_ERRORS } from "../../errors";
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { createValidUser } from "../../testing-utils/user-fakers";
-import { RegisterUserUseCase } from "./register-user";
-import { CommandResponse } from "../../utils/command-response";
-import { USER_EVENTS } from "../../events/users/user-events";
+import { DOMAIN_ERRORS } from "../../errors/index.js";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { createValidUser } from "../../testing-utils/user-fakers.js";
+import { RegisterUserUseCase } from "./register-user.js";
+import { CommandResponse } from "../../utils/command-response.js";
+import { USER_EVENTS } from "../../events/users/user-events.js";
 
 describe("Register User", () => {
     test("given some valid credentials, it should emit the correct event", async () => {

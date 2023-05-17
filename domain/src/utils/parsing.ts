@@ -1,4 +1,4 @@
-import { Result } from ".";
+import { Result } from "./index.js";
 
 export const ParsingError = {
     SHOULD_BE_STRING: "SHOULD_BE_STRING",

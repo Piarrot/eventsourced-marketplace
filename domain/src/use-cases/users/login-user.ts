@@ -1,13 +1,19 @@
-import { DOMAIN_ERRORS, INVALID_CREDENTIALS_ERROR } from "../../errors";
-import { LoginEvent, LoginEventType } from "../../events/users/user-logged-in";
-import { IUsersProvider } from "../../providers/users-provider";
-import { ICryptoProvider } from "../../providers/crypto-provider";
-import { IEventStore } from "../../providers/event-store";
-import { ITimeProvider } from "../../providers/time-provider";
-import { QueryResponse } from "../../utils/query-response";
-import { QueryUseCase } from "../../utils/use-cases";
-import { LoginToken } from "../../response-models/login-token";
-import { LoginCredentials } from "../../request-models/login-credentials";
+import {
+    DOMAIN_ERRORS,
+    INVALID_CREDENTIALS_ERROR,
+} from "../../errors/index.js";
+import {
+    LoginEvent,
+    LoginEventType,
+} from "../../events/users/user-logged-in.js";
+import { IUsersProvider } from "../../providers/users-provider.js";
+import { ICryptoProvider } from "../../providers/crypto-provider.js";
+import { IEventStore } from "../../providers/event-store.js";
+import { ITimeProvider } from "../../providers/time-provider.js";
+import { QueryResponse } from "../../utils/query-response.js";
+import { QueryUseCase } from "../../utils/use-cases.js";
+import { LoginToken } from "../../response-models/login-token.js";
+import { LoginCredentials } from "../../request-models/login-credentials.js";
 
 export interface LoginContext {
     users: IUsersProvider;

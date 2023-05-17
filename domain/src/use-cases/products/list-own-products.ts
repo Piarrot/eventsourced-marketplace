@@ -1,7 +1,10 @@
-import { ProductListResponseModel, productListTransformer } from "../..";
-import { User } from "../../entities/user";
-import { IProductsProvider } from "../../providers/products-provider";
-import { QueryResponse } from "../../utils/query-response";
+import {
+    ProductListResponseModel,
+    productListTransformer,
+} from "../../index.js";
+import { User } from "../../entities/user.js";
+import { IProductsProvider } from "../../providers/products-provider.js";
+import { QueryResponse } from "../../utils/query-response.js";
 
 export interface ListOwnProductsContext {
     products: IProductsProvider;

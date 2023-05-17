@@ -1,6 +1,6 @@
-import { IUsersStore } from "../../providers/users-store";
-import { Event } from "../../utils/event";
-import { USER_CREATED_EVENT } from "./user-events";
+import { IUsersStore } from "../../providers/users-store.js";
+import { Event } from "../../utils/event.js";
+import { USER_CREATED_EVENT } from "./user-events.js";
 
 export type UserRegisteredEvent = Event<
     USER_CREATED_EVENT,

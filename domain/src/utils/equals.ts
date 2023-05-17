@@ -1,4 +1,4 @@
-import { isNoValue, isObject } from "./type-detection";
+import { isNoValue, isObject } from "./type-detection/index.js";
 
 export function equals(actual: any, expected: any): boolean {
     if (actual === expected) return true;

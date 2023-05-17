@@ -1,4 +1,4 @@
-import { isEmptyObject } from "./is-empty-object";
+import { isEmptyObject } from "./is-empty-object.js";
 
 describe("Is empty object", () => {
     it("should return correctly on an object with fields", () => {

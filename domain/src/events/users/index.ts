@@ -1,4 +1,4 @@
 //istanbul ignore file
-export * from "./user-events";
-export * from "./user-logged-in";
-export * from "./user-registered";
+export * from "./user-events.js";
+export * from "./user-logged-in.js";
+export * from "./user-registered.js";

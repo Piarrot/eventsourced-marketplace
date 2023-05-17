@@ -1,4 +1,4 @@
-import { User } from "../entities/user";
+import { User } from "../entities/user.js";
 import { randomUUID } from "crypto";
 
 export function createValidUser(opts?: Partial<User>): User {

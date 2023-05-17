@@ -7,13 +7,13 @@ import {
     parseLoginCredentials,
     parseRegisterUserPayload,
     parseUpdateProductPayload,
-} from "..";
-import { CreateProductUseCase } from "../use-cases/products/create-product";
-import { ListOwnProductsUseCase } from "../use-cases/products/list-own-products";
-import { UpdateProductUseCase } from "../use-cases/products/update-product";
-import { LoginUserUseCase } from "../use-cases/users/login-user";
-import { RegisterUserUseCase } from "../use-cases/users/register-user";
-import { PayloadParser } from "../utils/payload-parser";
+} from "../index.js";
+import { CreateProductUseCase } from "../use-cases/products/create-product.js";
+import { ListOwnProductsUseCase } from "../use-cases/products/list-own-products.js";
+import { UpdateProductUseCase } from "../use-cases/products/update-product.js";
+import { LoginUserUseCase } from "../use-cases/users/login-user.js";
+import { RegisterUserUseCase } from "../use-cases/users/register-user.js";
+import { PayloadParser } from "../utils/payload-parser.js";
 
 export type MESSAGES =
     | "USER_REGISTER_COMMAND"

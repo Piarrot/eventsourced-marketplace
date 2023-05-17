@@ -1,3 +1,3 @@
 //istanbul ignore file
-export * from "./mutate-deep";
-export * from "./mutate-shallow";
+export * from "./mutate-deep.js";
+export * from "./mutate-shallow.js";

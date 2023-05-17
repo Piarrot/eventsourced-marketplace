@@ -1,4 +1,4 @@
-import { deepClone } from "../cloning/deep-clone";
+import { deepClone } from "../cloning/deep-clone.js";
 
 export function mutateDeep<T>(
     thing: T,

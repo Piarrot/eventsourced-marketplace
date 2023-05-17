@@ -1,5 +1,5 @@
-import { User } from "../../entities/user";
-import { ICryptoProvider } from "../../providers/crypto-provider";
+import { User } from "../../entities/user.js";
+import { ICryptoProvider } from "../../providers/crypto-provider.js";
 
 export class CryptoProviderMock implements ICryptoProvider {
     async hashPassword(plainPassword: string) {

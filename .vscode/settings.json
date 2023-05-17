@@ -1,6 +1,6 @@
 {
-    "typescript.preferences.importModuleSpecifier": "relative",
-    "typescript.preferences.importModuleSpecifierEnding": "minimal",
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.preferences.importModuleSpecifierEnding": "js",
     "search.exclude": {
         "**/node_modules": true,
         "**/bower_components": true,

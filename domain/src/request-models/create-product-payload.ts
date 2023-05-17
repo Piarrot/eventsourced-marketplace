@@ -1,4 +1,9 @@
-import { ResultRecord, parseArray, parseNumber, parseString } from "..";
+import {
+    ResultRecord,
+    parseArray,
+    parseNumber,
+    parseString,
+} from "../index.js";
 
 export interface CreateProductPayload {
     name: string;

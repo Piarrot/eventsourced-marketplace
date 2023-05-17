@@ -1,16 +1,16 @@
-import { User } from "../../entities/user";
+import { User } from "../../entities/user.js";
 import {
     DOMAIN_ERRORS,
     INVALID_PRODUCT_ERROR,
     PERMISSION_DENIED_ERROR,
-} from "../../errors";
-import { EVENTS } from "../../events";
-import { ProductUpdatedEvent } from "../../events/products/product-updated";
-import { IEventStore } from "../../providers/event-store";
-import { IProductsProvider } from "../../providers/products-provider";
-import { ITimeProvider } from "../../providers/time-provider";
-import { UpdateProductPayload } from "../../request-models/update-product-payload";
-import { CommandResponse } from "../../utils/command-response";
+} from "../../errors/index.js";
+import { EVENTS } from "../../events/index.js";
+import { ProductUpdatedEvent } from "../../events/products/product-updated.js";
+import { IEventStore } from "../../providers/event-store.js";
+import { IProductsProvider } from "../../providers/products-provider.js";
+import { ITimeProvider } from "../../providers/time-provider.js";
+import { UpdateProductPayload } from "../../request-models/update-product-payload.js";
+import { CommandResponse } from "../../utils/command-response.js";
 
 export interface UpdateProductContext {
     time: ITimeProvider;

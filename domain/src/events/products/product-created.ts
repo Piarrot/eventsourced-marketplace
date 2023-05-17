@@ -1,5 +1,5 @@
-import { IProductsStore } from "../../providers/products-store";
-import { PRODUCT_CREATED_EVENT, ProductEvent } from "./product-events";
+import { IProductsStore } from "../../providers/products-store.js";
+import { PRODUCT_CREATED_EVENT, ProductEvent } from "./product-events.js";
 
 export type ProductCreatedEvent = ProductEvent<
     PRODUCT_CREATED_EVENT,

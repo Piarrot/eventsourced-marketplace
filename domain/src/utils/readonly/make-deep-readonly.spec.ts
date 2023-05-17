@@ -1,4 +1,4 @@
-import { makeDeepReadonly } from "./make-deep-readonly";
+import { makeDeepReadonly } from "./make-deep-readonly.js";
 
 describe("makeDeepReadonly", () => {
     it("should make an object fully readonly", () => {

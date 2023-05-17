@@ -1,7 +1,7 @@
-import { Product } from "../../entities/product";
-import { IProductsProvider } from "../../providers/products-provider";
-import { IProductsStore } from "../../providers/products-store";
-import { deepClone } from "../../utils/cloning";
+import { Product } from "../../entities/product.js";
+import { IProductsProvider } from "../../providers/products-provider.js";
+import { IProductsStore } from "../../providers/products-store.js";
+import { deepClone } from "../../utils/cloning/index.js";
 
 export class ProductProviderMock implements IProductsProvider, IProductsStore {
     async getProductsByOwner(ownerId: string) {

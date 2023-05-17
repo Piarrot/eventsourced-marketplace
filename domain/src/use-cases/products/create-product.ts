@@ -1,11 +1,11 @@
-import { User } from "../../entities/user";
-import { ProductCreatedEvent } from "../../events/products/product-created";
-import { PRODUCT_EVENTS } from "../../events/products/product-events";
-import { ICryptoProvider } from "../../providers/crypto-provider";
-import { IEventStore } from "../../providers/event-store";
-import { ITimeProvider } from "../../providers/time-provider";
-import { CreateProductPayload } from "../../request-models/create-product-payload";
-import { CommandResponse } from "../../utils/command-response";
+import { User } from "../../entities/user.js";
+import { ProductCreatedEvent } from "../../events/products/product-created.js";
+import { PRODUCT_EVENTS } from "../../events/products/product-events.js";
+import { ICryptoProvider } from "../../providers/crypto-provider.js";
+import { IEventStore } from "../../providers/event-store.js";
+import { ITimeProvider } from "../../providers/time-provider.js";
+import { CreateProductPayload } from "../../request-models/create-product-payload.js";
+import { CommandResponse } from "../../utils/command-response.js";
 
 export interface CreateProductContext {
     currentUser: User;

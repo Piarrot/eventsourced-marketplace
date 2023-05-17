@@ -1,4 +1,4 @@
-import { shallowClone } from "../cloning/shallow-clone";
+import { shallowClone } from "../cloning/shallow-clone.js";
 
 export function mutateShallow<T>(
     thing: T,

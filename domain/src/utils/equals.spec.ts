@@ -1,4 +1,4 @@
-import { equals } from "./equals";
+import { equals } from "./equals.js";
 
 describe("Equals", () => {
     test("Given two equal objects, should return true", () => {

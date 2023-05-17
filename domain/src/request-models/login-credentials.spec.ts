@@ -1,5 +1,5 @@
-import { parseLoginCredentials } from ".";
-import { ResultRecord } from "..";
+import { parseLoginCredentials } from "./index.js";
+import { ResultRecord } from "../index.js";
 
 describe("Parse LoginCredentials", () => {
     test("given a valid payload, should parse without errors", () => {

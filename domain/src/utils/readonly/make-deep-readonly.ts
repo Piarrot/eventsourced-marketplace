@@ -1,6 +1,6 @@
-import { shallowClone } from "../cloning/shallow-clone";
-import { isObject } from "../type-detection/is-object";
-import { DeepReadonly } from "./deep-readonly";
+import { shallowClone } from "../cloning/shallow-clone.js";
+import { isObject } from "../type-detection/is-object.js";
+import { DeepReadonly } from "./deep-readonly.js";
 
 export function makeDeepReadonly<T>(thing: T): DeepReadonly<T> {
     if (!isObject(thing)) return thing;

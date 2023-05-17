@@ -1,8 +1,8 @@
-import { CryptoProviderMock } from "./mocks/crypto-provider.mock";
-import { EventStoreMock } from "./mocks/event-store.mock";
-import { ProductProviderMock } from "./mocks/product-provider.mock";
-import { TimeProviderMock } from "./mocks/time-provider.mock";
-import { UserProviderMock } from "./mocks/users-provider.mock";
+import { CryptoProviderMock } from "./mocks/crypto-provider.mock.js";
+import { EventStoreMock } from "./mocks/event-store.mock.js";
+import { ProductProviderMock } from "./mocks/product-provider.mock.js";
+import { TimeProviderMock } from "./mocks/time-provider.mock.js";
+import { UserProviderMock } from "./mocks/users-provider.mock.js";
 
 interface DefaultTestingContext {
     time: TimeProviderMock;

@@ -1,5 +1,5 @@
-import { Product } from "..";
-import { ResponseTransformer } from "../utils/response-transformer";
+import { Product } from "../index.js";
+import { ResponseTransformer } from "../utils/response-transformer.js";
 
 export interface ProductListResponseModel {
     id: string;

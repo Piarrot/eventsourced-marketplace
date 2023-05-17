@@ -1,10 +1,10 @@
-import { DOMAIN_ERRORS } from "../../errors";
-import { PRODUCT_EVENTS } from "../../events/products/product-events";
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { createValidProduct } from "../../testing-utils/product-fakers";
-import { createValidUser } from "../../testing-utils/user-fakers";
-import { CommandResponse } from "../../utils/command-response";
-import { UpdateProductUseCase } from "./update-product";
+import { DOMAIN_ERRORS } from "../../errors/index.js";
+import { PRODUCT_EVENTS } from "../../events/products/product-events.js";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { createValidProduct } from "../../testing-utils/product-fakers.js";
+import { createValidUser } from "../../testing-utils/user-fakers.js";
+import { CommandResponse } from "../../utils/command-response.js";
+import { UpdateProductUseCase } from "./update-product.js";
 
 describe("Update Product Use Case", () => {
     test("Given a valid payload should update it", async () => {

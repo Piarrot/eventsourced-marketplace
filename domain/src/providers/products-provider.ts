@@ -1,4 +1,4 @@
-import { Product } from "../entities/product";
+import { Product } from "../entities/product.js";
 
 export interface IProductsProvider {
     getProductsByOwner(ownerId: string): Promise<Product[]>;

@@ -1,4 +1,4 @@
-import { mutateDeep } from "./mutate-deep";
+import { mutateDeep } from "./mutate-deep.js";
 
 describe("mutateDeep", () => {
     test("given an object, it should mutate the object safely and return a mutated deep copy", () => {

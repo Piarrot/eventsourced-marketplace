@@ -1,4 +1,4 @@
-import { Event } from "../../utils/event";
+import { Event } from "../../utils/event.js";
 
 export const PRODUCT_EVENTS = {
     PRODUCT_CREATED: "PRODUCT_CREATED",

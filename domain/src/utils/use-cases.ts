@@ -1,5 +1,5 @@
-import { CommandResponse } from "./command-response";
-import { QueryResponse } from "./query-response";
+import { CommandResponse } from "./command-response.js";
+import { QueryResponse } from "./query-response.js";
 
 export type CommandUseCase<Payload, Context, Error extends string> = (
     payload: Payload,

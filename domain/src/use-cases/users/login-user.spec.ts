@@ -1,9 +1,9 @@
-import { DOMAIN_ERRORS } from "../../errors";
-import { LoginEventType } from "../../events/users/user-logged-in";
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { createValidUser } from "../../testing-utils/user-fakers";
-import { QueryResponse } from "../../utils/query-response";
-import { LoginUserUseCase } from "./login-user";
+import { DOMAIN_ERRORS } from "../../errors/index.js";
+import { LoginEventType } from "../../events/users/user-logged-in.js";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { createValidUser } from "../../testing-utils/user-fakers.js";
+import { QueryResponse } from "../../utils/query-response.js";
+import { LoginUserUseCase } from "./login-user.js";
 
 describe("Login User", () => {
     test("given the user is registered and a valid payload, it should return a login event", async () => {

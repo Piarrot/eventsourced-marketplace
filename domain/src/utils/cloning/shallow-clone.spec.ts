@@ -1,5 +1,5 @@
-import { ICloneable } from "./cloneable";
-import { shallowClone } from "./shallow-clone";
+import { ICloneable } from "./cloneable.js";
+import { shallowClone } from "./shallow-clone.js";
 
 describe("Shallow Clone", () => {
     it("should clone a number", () => {

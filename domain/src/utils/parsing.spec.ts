@@ -1,5 +1,5 @@
-import { parseNumber, parseString, parseArray, parseEmail } from "./parsing";
-import { Result } from ".";
+import { parseNumber, parseString, parseArray, parseEmail } from "./parsing.js";
+import { Result } from "./index.js";
 
 describe("Parsing utils", () => {
     test("parseString", () => {

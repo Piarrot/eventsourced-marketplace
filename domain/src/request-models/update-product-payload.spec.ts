@@ -1,5 +1,5 @@
-import { parseUpdateProductPayload } from ".";
-import { ResultRecord } from "..";
+import { parseUpdateProductPayload } from "./index.js";
+import { ResultRecord } from "../index.js";
 
 describe("Parse UpdateProductPayload", () => {
     test("given a valid payload, should parse without errors", () => {

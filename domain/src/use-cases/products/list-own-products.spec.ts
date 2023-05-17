@@ -1,8 +1,8 @@
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { createValidProduct } from "../../testing-utils/product-fakers";
-import { createValidUser } from "../../testing-utils/user-fakers";
-import { QueryResponse } from "../../utils/query-response";
-import { ListOwnProductsUseCase } from "./list-own-products";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { createValidProduct } from "../../testing-utils/product-fakers.js";
+import { createValidUser } from "../../testing-utils/user-fakers.js";
+import { QueryResponse } from "../../utils/query-response.js";
+import { ListOwnProductsUseCase } from "./list-own-products.js";
 
 describe("List Owned Products", () => {
     test("given a user without products it should return an empty array", async () => {

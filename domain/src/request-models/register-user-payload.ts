@@ -1,5 +1,5 @@
-import { parseEmail, parseString } from "../utils/parsing";
-import { ResultRecord } from "../utils/result-record";
+import { parseEmail, parseString } from "../utils/parsing.js";
+import { ResultRecord } from "../utils/result-record.js";
 
 export interface RegisterUserPayload {
     name: string;

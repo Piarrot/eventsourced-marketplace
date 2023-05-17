@@ -1,12 +1,15 @@
-import { ICryptoProvider } from "../../providers/crypto-provider";
-import { ITimeProvider } from "../../providers/time-provider";
-import { UserRegisteredEvent } from "../../events/users/user-registered";
-import { EMAIL_ALREADY_REGISTERED_ERROR, DOMAIN_ERRORS } from "../../errors";
-import { IUsersProvider } from "../../providers/users-provider";
-import { IEventStore } from "../../providers/event-store";
-import { CommandResponse } from "../../utils/command-response";
-import { USER_EVENTS } from "../../events/users/user-events";
-import { RegisterUserPayload } from "../../request-models/register-user-payload";
+import { ICryptoProvider } from "../../providers/crypto-provider.js";
+import { ITimeProvider } from "../../providers/time-provider.js";
+import { UserRegisteredEvent } from "../../events/users/user-registered.js";
+import {
+    EMAIL_ALREADY_REGISTERED_ERROR,
+    DOMAIN_ERRORS,
+} from "../../errors/index.js";
+import { IUsersProvider } from "../../providers/users-provider.js";
+import { IEventStore } from "../../providers/event-store.js";
+import { CommandResponse } from "../../utils/command-response.js";
+import { USER_EVENTS } from "../../events/users/user-events.js";
+import { RegisterUserPayload } from "../../request-models/register-user-payload.js";
 
 export interface RegisterUserContext {
     time: ITimeProvider;

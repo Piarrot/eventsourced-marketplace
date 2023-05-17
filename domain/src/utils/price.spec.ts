@@ -1,4 +1,4 @@
-import { calculatePriceWithDiscount } from "./price";
+import { calculatePriceWithDiscount } from "./price.js";
 
 describe("Price", () => {
     test("given a price and a discount, it should apply it correctly", () => {

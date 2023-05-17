@@ -1,5 +1,5 @@
-import { parseCreateProductPayload } from ".";
-import { ParsingError, ResultRecord } from "..";
+import { parseCreateProductPayload } from "./index.js";
+import { ParsingError, ResultRecord } from "../index.js";
 
 describe("Parse CreateProductPayload", () => {
     test("given a valid payload, should parse without errors", () => {

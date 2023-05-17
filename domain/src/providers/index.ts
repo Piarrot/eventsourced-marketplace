@@ -1,8 +1,8 @@
 //istanbul ignore file
-export * from "./crypto-provider";
-export * from "./event-store";
-export * from "./products-provider";
-export * from "./products-store";
-export * from "./time-provider";
-export * from "./users-provider";
-export * from "./users-store";
+export * from "./crypto-provider.js";
+export * from "./event-store.js";
+export * from "./products-provider.js";
+export * from "./products-store.js";
+export * from "./time-provider.js";
+export * from "./users-provider.js";
+export * from "./users-store.js";

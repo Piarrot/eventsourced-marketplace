@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { Product } from "../entities/product";
+import { Product } from "../entities/product.js";
 
 export function createValidProduct(
     ownerId: string,

@@ -1,8 +1,8 @@
-import { EVENTS } from "..";
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { createValidProduct } from "../../testing-utils/product-fakers";
-import { createValidUser } from "../../testing-utils/user-fakers";
-import { ApplyProductUpdated } from "./product-updated";
+import { EVENTS } from "../index.js";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { createValidProduct } from "../../testing-utils/product-fakers.js";
+import { createValidUser } from "../../testing-utils/user-fakers.js";
+import { ApplyProductUpdated } from "./product-updated.js";
 
 describe("Product Updated Event", () => {
     test("Given a valid payload should update it", async () => {

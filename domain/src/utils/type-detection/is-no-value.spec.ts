@@ -1,4 +1,4 @@
-import { isNoValue } from "./is-no-value";
+import { isNoValue } from "./is-no-value.js";
 
 describe("Is No Value", () => {
     test("Given a value, should return false", () => {

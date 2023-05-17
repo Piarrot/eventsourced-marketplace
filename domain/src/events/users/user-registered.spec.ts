@@ -1,6 +1,6 @@
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { USER_EVENTS } from "./user-events";
-import { UserRegisteredEvent, ApplyUserRegistered } from "./user-registered";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { USER_EVENTS } from "./user-events.js";
+import { UserRegisteredEvent, ApplyUserRegistered } from "./user-registered.js";
 
 describe("UserRegistered", () => {
     test("given an event it should create a new user entity", async () => {

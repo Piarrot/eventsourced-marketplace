@@ -1,4 +1,4 @@
-import { mutateShallow } from "./mutate-shallow";
+import { mutateShallow } from "./mutate-shallow.js";
 
 describe("mutateShallow", () => {
     test("given an object, it should mutate the object safely and return a mutated shallow copy", () => {

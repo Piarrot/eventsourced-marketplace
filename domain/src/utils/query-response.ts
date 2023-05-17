@@ -1,4 +1,4 @@
-import { FailureResponse } from "./failure-response";
+import { FailureResponse } from "./failure-response.js";
 
 export interface QuerySuccess<T> {
     success: true;

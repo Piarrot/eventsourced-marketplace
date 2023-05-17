@@ -1,3 +1,3 @@
 //istanbul ignore file
-export * from "./login-user";
-export * from "./register-user";
+export * from "./login-user.js";
+export * from "./register-user.js";

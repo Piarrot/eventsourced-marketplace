@@ -1,7 +1,7 @@
-import { EVENTS } from "..";
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { createValidProduct } from "../../testing-utils/product-fakers";
-import { ApplyProductPublishedEvent } from "./product-published";
+import { EVENTS } from "../index.js";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { createValidProduct } from "../../testing-utils/product-fakers.js";
+import { ApplyProductPublishedEvent } from "./product-published.js";
 
 describe("ProductPublished", () => {
     test("given a publish event, it should update the product when applying it", async () => {

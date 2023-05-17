@@ -1,4 +1,4 @@
-import { ResultRecord, parseRegisterUserPayload } from "..";
+import { ResultRecord, parseRegisterUserPayload } from "../index.js";
 
 describe("Parse RegisterPayload", () => {
     test("given a valid payload, should parse without errors", () => {

@@ -1,3 +1,3 @@
 //istanbul ignore file
-export * from "./products";
-export * from "./users";
+export * from "./products/index.js";
+export * from "./users/index.js";

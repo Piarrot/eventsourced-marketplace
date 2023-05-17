@@ -1,6 +1,6 @@
-import { createTestingContext } from "../../testing-utils/default-testing-context";
-import { ApplyProductCreated, ProductCreatedEvent } from "./product-created";
-import { PRODUCT_EVENTS } from "./product-events";
+import { createTestingContext } from "../../testing-utils/default-testing-context.js";
+import { ApplyProductCreated, ProductCreatedEvent } from "./product-created.js";
+import { PRODUCT_EVENTS } from "./product-events.js";
 
 describe("Product Created Event", () => {
     test("Given a Created Event should store a new product", async () => {

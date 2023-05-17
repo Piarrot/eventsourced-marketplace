@@ -1,4 +1,4 @@
-import { ITimeProvider } from "../../providers/time-provider";
+import { ITimeProvider } from "../../providers/time-provider.js";
 
 export class TimeProviderMock implements ITimeProvider {
     currentTimestamp() {

@@ -1,4 +1,4 @@
 //istanbul ignore file
-export * from "./cloneable";
-export * from "./deep-clone";
-export * from "./shallow-clone";
+export * from "./cloneable.js";
+export * from "./deep-clone.js";
+export * from "./shallow-clone.js";

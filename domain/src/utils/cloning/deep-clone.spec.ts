@@ -1,4 +1,4 @@
-import { deepClone } from "./deep-clone";
+import { deepClone } from "./deep-clone.js";
 
 describe("Deep Clone", () => {
     it("should clone a number", () => {
