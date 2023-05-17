@@ -1,8 +1,10 @@
 {
     "name": "mercadoliebre-api",
     "packageManager": "yarn@3.5.1",
+    "type": "module",
     "dependencies": {
         "@aws-sdk/client-s3": "^3.332.0",
+        "@ulthar/deppy": "^0.1.2",
         "express": "^4.18.2",
         "mercadoliebre-domain": "workspace:^",
         "morgan": "^1.10.0"
