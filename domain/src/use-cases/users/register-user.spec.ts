@@ -25,7 +25,7 @@ describe("Register User", () => {
         expect(result.success).toEqual(true);
 
         expect(
-            context.eventStore.getEventStream(USER_EVENTS.USER_CREATED)[0]
+            context.events.getEventStream(USER_EVENTS.USER_CREATED)[0]
         ).toEqual({
             type: USER_EVENTS.USER_CREATED,
             userId: context.crypto.getLastId(),

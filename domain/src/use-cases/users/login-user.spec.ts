@@ -1,5 +1,6 @@
 import { DOMAIN_ERRORS } from "../../errors/index.js";
 import { LoginEventType } from "../../events/users/user-logged-in.js";
+import { Result } from "../../index.js";
 import { createTestingContext } from "../../testing-utils/default-testing-context.js";
 import { createValidUser } from "../../testing-utils/user-fakers.js";
 import { QueryResponse } from "../../utils/query-response.js";
@@ -23,10 +24,14 @@ describe("Login User", () => {
         if (QueryResponse.isFailure(result))
             throw new Error("should not be an error");
         const data = result.data;
-        expect(data).toEqual({
-            token: "JWT-" + user.email + "-" + user.id + "-mock",
-        });
-        expect(context.eventStore.getEventStream(LoginEventType)[0]).toEqual({
+        expect(await context.crypto.verifyJWT(data.token)).toEqual(
+            Result.success({
+                email: user.email,
+                id: user.id,
+                name: user.name,
+            })
+        );
+        expect(context.events.getEventStream(LoginEventType)[0]).toEqual({
             type: LoginEventType,
             userId: user.id,
             timestamp: context.time.currentTimestamp(),

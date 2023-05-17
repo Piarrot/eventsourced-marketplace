@@ -29,7 +29,7 @@ describe("Create Product", () => {
             throw new Error("Should not fail");
         }
         expect(
-            context.eventStore.getEventStream(PRODUCT_EVENTS.PRODUCT_CREATED)[0]
+            context.events.getEventStream(PRODUCT_EVENTS.PRODUCT_CREATED)[0]
         ).toEqual({
             type: PRODUCT_EVENTS.PRODUCT_CREATED,
             userId: currentUser.id,

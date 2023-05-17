@@ -15,7 +15,7 @@ export interface RegisterUserContext {
     time: ITimeProvider;
     crypto: ICryptoProvider;
     users: IUsersProvider;
-    eventStore: IEventStore;
+    events: IEventStore;
 }
 
 export async function RegisterUserUseCase(
@@ -26,7 +26,7 @@ export async function RegisterUserUseCase(
         return CommandResponse.failure(DOMAIN_ERRORS.EMAIL_ALREADY_REGISTERED);
     }
 
-    await context.eventStore.publish<UserRegisteredEvent>({
+    await context.events.publish<UserRegisteredEvent>({
         type: USER_EVENTS.USER_CREATED,
         userId: await context.crypto.newUUID(),
         payload: {

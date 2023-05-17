@@ -3,6 +3,9 @@ import { deepClone } from "../../utils/cloning/index.js";
 import { Event } from "../../utils/event.js";
 
 export class EventStoreMock implements IEventStore {
+    rebuildState(): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
     subscribe<T extends Event<string, any>>(
         eventType: string,
         handler: (event: T) => Promise<void>

@@ -14,3 +14,4 @@ export * from "./failure-response.js";
 export * from "./domain-response.js";
 export * from "./result-record.js";
 export * from "./parsing.js";
+export * from "./get-user-from-token.js";

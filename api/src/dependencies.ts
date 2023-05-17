@@ -18,7 +18,7 @@ import { TimeProvider } from "./providers/impl/time-provider.js";
 import { UsersProvider } from "./providers/impl/users-provider.js";
 import { ProductsProvider } from "./providers/impl/products-provider.js";
 
-const dependencies: DependencyMapResolvers<Dependencies> = {
+export const dependencies: DependencyMapResolvers<Dependencies> = {
     logger: function (): MaybePromise<ILogger> {
         return new ConsoleLogger();
     },

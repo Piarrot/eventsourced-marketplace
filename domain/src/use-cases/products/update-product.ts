@@ -14,7 +14,7 @@ import { CommandResponse } from "../../utils/command-response.js";
 
 export interface UpdateProductContext {
     time: ITimeProvider;
-    eventStore: IEventStore;
+    events: IEventStore;
     currentUser: User;
     products: IProductsProvider;
 }
@@ -31,7 +31,7 @@ export async function UpdateProductUseCase(
         return CommandResponse.failure(DOMAIN_ERRORS.PERMISSION_DENIED);
     }
 
-    await context.eventStore.publish<ProductUpdatedEvent>({
+    await context.events.publish<ProductUpdatedEvent>({
         type: EVENTS.PRODUCT_UPDATED,
         userId: context.currentUser.id,
         productId: product.id,

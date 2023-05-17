@@ -5,20 +5,10 @@ export const RouterMap: Record<MESSAGES, RouteDefinition> = {
     PRODUCT_CREATE_COMMAND: {
         method: "post",
         path: "/products",
+        requiresAuth: true,
         requestParser: async (req, context) => {
             //TODO: upload images
             return req.body;
-        },
-    },
-    PRODUCT_UPDATE_COMMAND: {
-        method: "put",
-        path: "/products/:id",
-        requestParser: async (req, context) => {
-            //TODO: upload images
-            return {
-                ...req.body,
-                id: req.params.id,
-            };
         },
     },
     USER_REGISTER_COMMAND: {
@@ -31,12 +21,25 @@ export const RouterMap: Record<MESSAGES, RouteDefinition> = {
     },
     LIST_OWN_PRODUCTS_QUERY: {
         method: "get",
-        path: "/products",
+        path: "/products/own",
+        requiresAuth: true,
         requestParser: async (req, context) => ({}),
     },
     USER_LOGIN_QUERY: {
         method: "post",
         path: "/auth/login",
         requestParser: async (req, context) => req.body,
+    },
+    PRODUCT_UPDATE_COMMAND: {
+        method: "patch",
+        path: "/products/:id",
+        requiresAuth: true,
+        requestParser: async (req, context) => {
+            //TODO: upload images
+            return {
+                ...req.body,
+                id: req.params.id,
+            };
+        },
     },
 };

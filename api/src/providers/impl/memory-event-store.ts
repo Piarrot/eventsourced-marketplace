@@ -13,9 +13,12 @@ export class MemoryEventStore implements IEventStore {
         string,
         Array<(event: Event<string, any>) => MaybePromise<void>>
     > = {};
+    private stateRebuilt = false;
 
     constructor() {
-        this.loadEvents();
+        process.on("exit", () => {
+            this.saveEvents();
+        });
     }
 
     publish<T extends Event<string, any>>(event: T): Promise<void> {
@@ -42,7 +45,8 @@ export class MemoryEventStore implements IEventStore {
         }
     }
 
-    private async loadEvents() {
+    public async rebuildState() {
+        if (this.stateRebuilt) return;
         let events = [];
         if (existsSync(filePath)) {
             events = JSON.parse(await readFile(filePath, "utf-8"));
@@ -53,6 +57,7 @@ export class MemoryEventStore implements IEventStore {
             );
         }
         this.events = events;
+        this.stateRebuilt = true;
     }
 
     private async saveEvents() {

@@ -19,7 +19,7 @@ export interface LoginContext {
     users: IUsersProvider;
     crypto: ICryptoProvider;
     time: ITimeProvider;
-    eventStore: IEventStore;
+    events: IEventStore;
 }
 export const LoginUserUseCase: QueryUseCase<
     LoginCredentials,
@@ -42,7 +42,7 @@ export const LoginUserUseCase: QueryUseCase<
 
     const token = await context.crypto.generateJWT(foundUser);
 
-    await context.eventStore.publish<LoginEvent>({
+    await context.events.publish<LoginEvent>({
         type: LoginEventType,
         userId: foundUser.id,
         timestamp: context.time.currentTimestamp(),

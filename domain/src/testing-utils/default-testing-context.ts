@@ -9,7 +9,7 @@ interface DefaultTestingContext {
     crypto: CryptoProviderMock;
     products: ProductProviderMock;
     users: UserProviderMock;
-    eventStore: EventStoreMock;
+    events: EventStoreMock;
 }
 
 export const createTestingContext = (): DefaultTestingContext => ({
@@ -17,5 +17,5 @@ export const createTestingContext = (): DefaultTestingContext => ({
     crypto: new CryptoProviderMock(),
     products: new ProductProviderMock(),
     users: new UserProviderMock(),
-    eventStore: new EventStoreMock(),
+    events: new EventStoreMock(),
 });

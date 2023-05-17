@@ -4,6 +4,9 @@ import { IUsersStore } from "../../providers/users-store.js";
 import { deepClone } from "../../utils/cloning/index.js";
 
 export class UserProviderMock implements IUsersProvider, IUsersStore {
+    async getById(userId: string): Promise<User | undefined> {
+        return deepClone(this.users.find((u) => u.id === userId));
+    }
     async getByEmail(email: string): Promise<User | undefined> {
         return deepClone(this.users.find((u) => u.email === email));
     }

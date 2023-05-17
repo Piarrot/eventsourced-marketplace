@@ -9,7 +9,7 @@ import { CommandResponse } from "../../utils/command-response.js";
 
 export interface CreateProductContext {
     currentUser: User;
-    eventStore: IEventStore;
+    events: IEventStore;
     crypto: ICryptoProvider;
     time: ITimeProvider;
 }
@@ -18,7 +18,7 @@ export async function CreateProductUseCase(
     payload: CreateProductPayload,
     context: CreateProductContext
 ): Promise<CommandResponse<never>> {
-    const { currentUser, eventStore, crypto, time } = context;
+    const { currentUser, events, crypto, time } = context;
     const { name, price, discount, description, images, categoryIds } = payload;
 
     const event: ProductCreatedEvent = {
@@ -36,7 +36,7 @@ export async function CreateProductUseCase(
         },
     };
 
-    await eventStore.publish(event);
+    await events.publish(event);
 
     return CommandResponse.success();
 }

@@ -1,4 +1,9 @@
-import { ICryptoProvider, User } from "mercadoliebre-domain";
+import {
+    ICryptoProvider,
+    JWTPayload,
+    Result,
+    User,
+} from "mercadoliebre-domain";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import bcrypt from "bcryptjs";
@@ -33,6 +38,18 @@ export class CryptoProvider implements ICryptoProvider {
                     }
                 }
             );
+        });
+    }
+
+    verifyJWT(token: string): Promise<Result<JWTPayload, "INVALID_JWT">> {
+        return new Promise((resolve, reject) => {
+            jwt.verify(token, this.jwtSecret, (err, decoded) => {
+                if (err) {
+                    resolve(Result.fail("INVALID_JWT"));
+                } else {
+                    resolve(Result.success(decoded as JWTPayload));
+                }
+            });
         });
     }
 }

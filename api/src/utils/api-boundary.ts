@@ -8,6 +8,7 @@ import {
 } from "mercadoliebre-domain";
 import { Request, Response, Express } from "express";
 import { container } from "../container.js";
+import { authGuard } from "../middlewares/auth-guard.js";
 
 export type RequestParser = (
     req: Request,
@@ -17,6 +18,7 @@ export type RequestParser = (
 export interface RouteDefinition {
     method: "get" | "post" | "put" | "delete" | "patch";
     path: string;
+    requiresAuth?: boolean;
     requestParser: RequestParser;
 }
 
@@ -26,6 +28,9 @@ export function defineHTTPBoundaryRoutes(
     errorMap: Record<DOMAIN_ERRORS, ErrorDefinition>
 ) {
     for (const [message, route] of Object.entries(boundaryEndpointsMap)) {
+        if (route.requiresAuth) {
+            app[route.method](route.path, authGuard);
+        }
         app[route.method](
             route.path,
             wrapBoundaryHandler(
@@ -45,7 +50,7 @@ export function wrapBoundaryHandler(
     return async (req: Request, res: Response) => {
         const appContext = {
             ...container.getPlainDependencyMap(),
-            currentUser: res.locals.user,
+            ...res.locals,
         };
         try {
             const handler = boundary.handler;

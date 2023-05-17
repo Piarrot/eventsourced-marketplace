@@ -1,5 +1,9 @@
 import { User } from "../../entities/user.js";
-import { ICryptoProvider } from "../../providers/crypto-provider.js";
+import { Result } from "../../index.js";
+import {
+    ICryptoProvider,
+    JWTPayload,
+} from "../../providers/crypto-provider.js";
 
 export class CryptoProviderMock implements ICryptoProvider {
     async hashPassword(plainPassword: string) {
@@ -13,8 +17,24 @@ export class CryptoProviderMock implements ICryptoProvider {
         return `hashed-${plainPassword}` === hash;
     }
 
+    async verifyJWT(token: string): Promise<Result<JWTPayload, "INVALID_JWT">> {
+        const data = token.split("$$");
+        if (data.length !== 5) {
+            return Result.fail("INVALID_JWT");
+        }
+        const [, email, id, name] = data;
+
+        return Result.success({
+            email,
+            id,
+            name,
+        });
+    }
+
     async generateJWT(user: User): Promise<string> {
-        return "JWT-" + user.email + "-" + user.id + "-mock";
+        return (
+            "JWT$$" + user.email + "$$" + user.id + "$$" + user.name + "$$mock"
+        );
     }
 
     /// Mocking utilities

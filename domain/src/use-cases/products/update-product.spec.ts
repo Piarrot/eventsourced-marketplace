@@ -31,7 +31,7 @@ describe("Update Product Use Case", () => {
         }
 
         expect(
-            context.eventStore.getEventStream(PRODUCT_EVENTS.PRODUCT_UPDATED)[0]
+            context.events.getEventStream(PRODUCT_EVENTS.PRODUCT_UPDATED)[0]
         ).toEqual({
             type: PRODUCT_EVENTS.PRODUCT_UPDATED,
             userId: currentUser.id,

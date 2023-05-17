@@ -6,4 +6,5 @@ export interface IEventStore {
         eventType: string,
         handler: (event: T) => Promise<void> | void
     ): void;
+    rebuildState(): Promise<void>;
 }

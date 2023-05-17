@@ -17,4 +17,8 @@ export class UsersProvider implements IUsersProvider, IUsersStore {
         this.users[user.id] = user;
         return Promise.resolve();
     }
+
+    getById(userId: string): Promise<User | undefined> {
+        return Promise.resolve(this.users[userId]);
+    }
 }
