@@ -7,7 +7,7 @@ import {
     ResultRecord,
 } from "mercadoliebre-domain";
 import { Request, Response, Express } from "express";
-import { container } from "../dependencies.js";
+import { container } from "../container.js";
 
 export type RequestParser = (
     req: Request,
