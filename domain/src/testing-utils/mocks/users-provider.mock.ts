@@ -1,9 +1,9 @@
 import { User } from "../../entities/user";
 import { IUsersProvider } from "../../providers/users-provider";
-import { IUsersSnapshotStore } from "../../providers/users-store";
+import { IUsersStore } from "../../providers/users-store";
 import { deepClone } from "../../utils/cloning";
 
-export class UserProviderMock implements IUsersProvider, IUsersSnapshotStore {
+export class UserProviderMock implements IUsersProvider, IUsersStore {
     async getByEmail(email: string): Promise<User | undefined> {
         return deepClone(this.users.find((u) => u.email === email));
     }

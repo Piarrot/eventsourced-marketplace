@@ -1,5 +1,3 @@
-import { ProductDetailOwnerResponseModel } from "./product-detail-owner";
-
 export interface ProductDetailResponseModel {
     id: string;
     name: string;
@@ -9,4 +7,10 @@ export interface ProductDetailResponseModel {
     discount: number;
 
     owner: ProductDetailOwnerResponseModel;
+}
+
+export interface ProductDetailOwnerResponseModel {
+    id: string;
+    name: string;
+    profilePicture: string;
 }

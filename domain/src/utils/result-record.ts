@@ -20,6 +20,28 @@ export type ResultRecord<T, E extends string> =
     | FailureRecord<T, E>;
 
 export const ResultRecord = {
+    success<T>(values: T): SuccessRecord<T> {
+        return {
+            success: true,
+            values,
+        };
+    },
+
+    failure<T, E extends string>(
+        errors: {
+            [K in keyof T]?: E;
+        },
+        values: {
+            [K in keyof T]?: T[K];
+        }
+    ): FailureRecord<T, E> {
+        return {
+            success: false,
+            errors,
+            values,
+        };
+    },
+
     unwrap<T, E extends string>(record: {
         [K in keyof T]: Result<T[K], E>;
     }): ResultRecord<T, E> {
@@ -39,19 +61,10 @@ export const ResultRecord = {
         }
 
         if (Object.keys(errors).length > 0) {
-            return {
-                success: false,
-                errors,
-                values,
-            };
+            return ResultRecord.failure(errors, values);
         }
 
-        return {
-            success: true,
-            values: values as {
-                [K in keyof T]: T[K];
-            },
-        };
+        return ResultRecord.success(values as T);
     },
 
     isFailure<T, E extends string>(

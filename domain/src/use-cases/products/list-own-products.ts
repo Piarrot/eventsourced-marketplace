@@ -1,4 +1,4 @@
-import { Product } from "../../entities/product";
+import { ProductListResponseModel, productListTransformer } from "../..";
 import { User } from "../../entities/user";
 import { IProductsProvider } from "../../providers/products-provider";
 import { QueryResponse } from "../../utils/query-response";
@@ -11,8 +11,10 @@ export interface ListOwnProductsContext {
 export async function ListOwnProductsUseCase(
     payload: {},
     context: ListOwnProductsContext
-): Promise<QueryResponse<Product[], never>> {
+): Promise<QueryResponse<ProductListResponseModel[], never>> {
     return QueryResponse.success(
-        await context.products.getProductsByOwner(context.currentUser.id)
+        productListTransformer(
+            await context.products.getProductsByOwner(context.currentUser.id)
+        )
     );
 }

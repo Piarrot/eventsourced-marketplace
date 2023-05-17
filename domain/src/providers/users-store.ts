@@ -1,5 +1,5 @@
 import { User } from "../entities/user";
 
-export interface IUsersSnapshotStore {
+export interface IUsersStore {
     create(user: User): Promise<void>;
 }

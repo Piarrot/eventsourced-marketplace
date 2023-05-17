@@ -1,4 +1,4 @@
-import { IUsersSnapshotStore } from "../../providers/users-store";
+import { IUsersStore } from "../../providers/users-store";
 import { Event } from "../../utils/event";
 import { USER_CREATED_EVENT } from "./user-events";
 
@@ -13,7 +13,7 @@ export type UserRegisteredEvent = Event<
 >;
 
 export interface UserRegisteredContext {
-    users: IUsersSnapshotStore;
+    users: IUsersStore;
 }
 
 export async function ApplyUserRegistered(
