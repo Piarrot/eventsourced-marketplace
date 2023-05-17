@@ -2,8 +2,14 @@
     "name": "mercadoliebre-api",
     "packageManager": "yarn@3.5.1",
     "dependencies": {
+        "@aws-sdk/client-s3": "^3.332.0",
+        "express": "^4.18.2",
+        "mercadoliebre-domain": "workspace:^",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
         "@types/express": "^4.17.17",
-        "@types/node": "^20.1.4",
-        "express": "^4.18.2"
+        "@types/morgan": "^1.9.4",
+        "@types/node": "^20.1.4"
     }
 }
