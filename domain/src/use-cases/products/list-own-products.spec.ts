@@ -18,10 +18,13 @@ describe("List Owned Products", () => {
         ]);
 
         //when
-        const response = await ListOwnProductsUseCase(undefined, {
-            ...context,
-            currentUser,
-        });
+        const response = await ListOwnProductsUseCase(
+            {},
+            {
+                ...context,
+                currentUser,
+            }
+        );
 
         //then
         if (QueryResponse.isFailure(response)) {
@@ -48,10 +51,13 @@ describe("List Owned Products", () => {
         ]);
 
         //when
-        const response = await ListOwnProductsUseCase(undefined, {
-            ...context,
-            currentUser,
-        });
+        const response = await ListOwnProductsUseCase(
+            {},
+            {
+                ...context,
+                currentUser,
+            }
+        );
 
         //then
         if (QueryResponse.isFailure(response)) {

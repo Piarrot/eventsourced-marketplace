@@ -1,6 +1,6 @@
 import { User } from "../../entities/user";
 import {
-    ERRORS,
+    DOMAIN_ERRORS,
     INVALID_PRODUCT_ERROR,
     PERMISSION_DENIED_ERROR,
 } from "../../errors";
@@ -25,10 +25,10 @@ export async function UpdateProductUseCase(
 ): Promise<CommandResponse<PERMISSION_DENIED_ERROR | INVALID_PRODUCT_ERROR>> {
     const product = await context.products.getById(payload.id);
     if (!product) {
-        return CommandResponse.failure(ERRORS.INVALID_PRODUCT);
+        return CommandResponse.failure(DOMAIN_ERRORS.INVALID_PRODUCT);
     }
     if (product.ownerId !== context.currentUser.id) {
-        return CommandResponse.failure(ERRORS.PERMISSION_DENIED);
+        return CommandResponse.failure(DOMAIN_ERRORS.PERMISSION_DENIED);
     }
 
     await context.eventStore.publish<ProductUpdatedEvent>({

@@ -1,4 +1,4 @@
-import { ERRORS, INVALID_CREDENTIALS_ERROR } from "../../errors";
+import { DOMAIN_ERRORS, INVALID_CREDENTIALS_ERROR } from "../../errors";
 import { LoginEvent, LoginEventType } from "../../events/users/user-logged-in";
 import { IUsersProvider } from "../../providers/users-provider";
 import { ICryptoProvider } from "../../providers/crypto-provider";
@@ -15,7 +15,7 @@ export interface LoginContext {
     time: ITimeProvider;
     eventStore: IEventStore;
 }
-export const LoginUser: QueryUseCase<
+export const LoginUserUseCase: QueryUseCase<
     LoginCredentials,
     LoginContext,
     LoginToken,
@@ -23,7 +23,7 @@ export const LoginUser: QueryUseCase<
 > = async (payload, context) => {
     const foundUser = await context.users.getByEmail(payload.email);
     if (!foundUser) {
-        return QueryResponse.failure(ERRORS.INVALID_CREDENTIALS);
+        return QueryResponse.failure(DOMAIN_ERRORS.INVALID_CREDENTIALS);
     }
     if (
         !(await context.crypto.verifyPassword(
@@ -31,7 +31,7 @@ export const LoginUser: QueryUseCase<
             foundUser.hashedPassword
         ))
     ) {
-        return QueryResponse.failure(ERRORS.INVALID_CREDENTIALS);
+        return QueryResponse.failure(DOMAIN_ERRORS.INVALID_CREDENTIALS);
     }
 
     const token = await context.crypto.generateJWT(foundUser);

@@ -1,4 +1,4 @@
-import { ERRORS } from "../../errors";
+import { DOMAIN_ERRORS } from "../../errors";
 import { PRODUCT_EVENTS } from "../../events/products/product-events";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidProduct } from "../../testing-utils/product-fakers";
@@ -90,6 +90,6 @@ describe("Update Product Use Case", () => {
         if (CommandResponse.isSuccess(result)) {
             throw new Error("Should not be success");
         }
-        expect(result.error).toBe(ERRORS.INVALID_PRODUCT);
+        expect(result.error).toBe(DOMAIN_ERRORS.INVALID_PRODUCT);
     });
 });

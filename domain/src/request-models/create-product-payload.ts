@@ -1,3 +1,5 @@
+import { ResultRecord, parseArray, parseNumber, parseString } from "..";
+
 export interface CreateProductPayload {
     name: string;
     price: number;
@@ -5,4 +7,17 @@ export interface CreateProductPayload {
     description: string;
     images: string[];
     categoryIds: string[];
+}
+
+export function parseCreateProductPayload(
+    payload: any
+): ResultRecord<CreateProductPayload, string> {
+    return ResultRecord.unwrap<CreateProductPayload, string>({
+        name: parseString(payload.name),
+        price: parseNumber(payload.price),
+        discount: parseNumber(payload.discount),
+        description: parseString(payload.description),
+        images: parseArray(payload.images, parseString, { min: 1 }),
+        categoryIds: parseArray(payload.categoryIds, parseString, { min: 1 }),
+    });
 }

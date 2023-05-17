@@ -1,30 +1,30 @@
-export type Result<T, E> = Value<T> | Error<E>;
+export type Result<T, E> = ResultValue<T> | ResultError<E>;
 
-export interface Error<E> {
+export interface ResultError<E> {
     error: E;
 }
 
-export interface Value<T> {
+export interface ResultValue<T> {
     value: T;
 }
 
 export const Result = {
-    fail<E>(error: E): Error<E> {
+    fail<E>(error: E): ResultError<E> {
         return { error };
     },
-    ok<T>(value: T): Value<T> {
+    success<T>(value: T): ResultValue<T> {
         return { value };
     },
-    isError<T, E>(result: Result<T, E>): result is Error<E> {
+    isFailure<T, E>(result: Result<T, E>): result is ResultError<E> {
         return (<any>result).error !== undefined;
     },
-    isSuccess<T, E>(result: Result<T, E>): result is Value<T> {
-        return (<any>result).value !== undefined;
+    isSuccess<T, E>(result: Result<T, E>): result is ResultValue<T> {
+        return (<any>result).error === undefined;
     },
-    unwrap<T>(result: Value<T>): T {
+    unwrap<T>(result: ResultValue<T>): T {
         return result.value;
     },
-    unwrapError<E>(result: Error<E>): E {
+    unwrapError<E>(result: ResultError<E>): E {
         return result.error;
     },
 };

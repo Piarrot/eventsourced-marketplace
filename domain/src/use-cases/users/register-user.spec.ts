@@ -1,4 +1,4 @@
-import { ERRORS } from "../../errors";
+import { DOMAIN_ERRORS } from "../../errors";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { RegisterUserUseCase } from "./register-user";
@@ -55,7 +55,9 @@ describe("Register User", () => {
         const result = await RegisterUserUseCase(payload, context);
         //then
         if (CommandResponse.isFailure(result)) {
-            expect(result.error).toEqual(ERRORS.EMAIL_ALREADY_REGISTERED);
+            expect(result.error).toEqual(
+                DOMAIN_ERRORS.EMAIL_ALREADY_REGISTERED
+            );
         } else {
             fail("Expected an error");
         }

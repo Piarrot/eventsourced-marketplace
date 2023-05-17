@@ -1,16 +1,13 @@
+import { FailureResponse } from "./failure-response";
+
 export interface QuerySuccess<T> {
     success: true;
     data: T;
 }
 
-export interface QueryFailure<E extends string> {
-    success: false;
-    error: E;
-}
-
 export type QueryResponse<T, E extends string> =
     | QuerySuccess<T>
-    | QueryFailure<E>;
+    | FailureResponse<E>;
 
 export const QueryResponse = {
     success<T>(data: T): QuerySuccess<T> {
@@ -19,7 +16,7 @@ export const QueryResponse = {
             data,
         };
     },
-    failure<E extends string>(error: E): QueryFailure<E> {
+    failure<E extends string>(error: E): FailureResponse<E> {
         return {
             success: false,
             error,
@@ -32,7 +29,7 @@ export const QueryResponse = {
     },
     isFailure<T, E extends string>(
         response: QueryResponse<T, E>
-    ): response is QueryFailure<E> {
+    ): response is FailureResponse<E> {
         return !response.success;
     },
 } as const;

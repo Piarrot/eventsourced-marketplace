@@ -1,9 +1,9 @@
-import { ERRORS } from "../../errors";
+import { DOMAIN_ERRORS } from "../../errors";
 import { LoginEventType } from "../../events/users/user-logged-in";
 import { createTestingContext } from "../../testing-utils/default-testing-context";
 import { createValidUser } from "../../testing-utils/user-fakers";
 import { QueryResponse } from "../../utils/query-response";
-import { LoginUser } from "./login-user";
+import { LoginUserUseCase } from "./login-user";
 
 describe("Login User", () => {
     test("given the user is registered and a valid payload, it should return a login event", async () => {
@@ -17,7 +17,7 @@ describe("Login User", () => {
         context.users.addUsers([user]);
 
         // when
-        const result = await LoginUser(payload, context);
+        const result = await LoginUserUseCase(payload, context);
 
         // then
         if (QueryResponse.isFailure(result))
@@ -43,13 +43,13 @@ describe("Login User", () => {
         const context = createTestingContext();
 
         // when
-        const result = await LoginUser(payload, context);
+        const result = await LoginUserUseCase(payload, context);
 
         // then
         if (QueryResponse.isSuccess(result))
             throw new Error("should not be a success");
 
-        expect(result.error).toEqual(ERRORS.INVALID_CREDENTIALS);
+        expect(result.error).toEqual(DOMAIN_ERRORS.INVALID_CREDENTIALS);
     });
 
     test("given an invalid password, it should return an error", async () => {
@@ -63,12 +63,12 @@ describe("Login User", () => {
         context.users.addUsers([user]);
 
         // when
-        const result = await LoginUser(payload, context);
+        const result = await LoginUserUseCase(payload, context);
 
         // then
         if (QueryResponse.isSuccess(result))
             throw new Error("should not be a success");
 
-        expect(result.error).toEqual(ERRORS.INVALID_CREDENTIALS);
+        expect(result.error).toEqual(DOMAIN_ERRORS.INVALID_CREDENTIALS);
     });
 });

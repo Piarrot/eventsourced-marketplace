@@ -1,15 +1,12 @@
+import { FailureResponse } from "./failure-response";
+
 export interface CommandSuccess {
     success: true;
 }
 
-export interface CommandFailure<E extends string> {
-    success: false;
-    error: E;
-}
-
 export type CommandResponse<E extends string> =
     | CommandSuccess
-    | CommandFailure<E>;
+    | FailureResponse<E>;
 
 export const CommandResponse = {
     success(): CommandSuccess {
@@ -17,7 +14,7 @@ export const CommandResponse = {
             success: true,
         };
     },
-    failure<E extends string>(error: E): CommandFailure<E> {
+    failure<E extends string>(error: E): FailureResponse<E> {
         return {
             success: false,
             error,
@@ -30,7 +27,7 @@ export const CommandResponse = {
     },
     isFailure<E extends string>(
         response: CommandResponse<E>
-    ): response is CommandFailure<E> {
+    ): response is FailureResponse<E> {
         return !response.success;
     },
 } as const;

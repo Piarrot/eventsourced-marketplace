@@ -9,7 +9,7 @@ export interface ListOwnProductsContext {
 }
 
 export async function ListOwnProductsUseCase(
-    payload: undefined,
+    payload: {},
     context: ListOwnProductsContext
 ): Promise<QueryResponse<Product[], never>> {
     return QueryResponse.success(
