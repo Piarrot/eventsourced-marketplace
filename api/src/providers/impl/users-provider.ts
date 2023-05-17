@@ -1,4 +1,4 @@
-import { IUsersProvider, IUsersStore, User } from "mercadoliebre-domain";
+import { IUsersProvider, IUsersStore, User } from "marketplace-domain";
 
 export class UsersProvider implements IUsersProvider, IUsersStore {
     private users: Record<string, User> = {};

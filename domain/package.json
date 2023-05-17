@@ -1,5 +1,5 @@
 {
-    "name": "mercadoliebre-domain",
+    "name": "marketplace-domain",
     "packageManager": "yarn@3.5.1",
     "devDependencies": {
         "@types/jest": "npm:^29.5.1",

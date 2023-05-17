@@ -1,4 +1,4 @@
-import { ITimeProvider } from "mercadoliebre-domain";
+import { ITimeProvider } from "marketplace-domain";
 
 export class TimeProvider implements ITimeProvider {
     currentTimestamp(): number {

@@ -1,4 +1,4 @@
-import { MESSAGES } from "mercadoliebre-domain";
+import { MESSAGES } from "marketplace-domain";
 import { RouteDefinition } from "./utils/api-boundary.js";
 
 export const RouterMap: Record<MESSAGES, RouteDefinition> = {

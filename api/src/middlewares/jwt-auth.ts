@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Result, getUserFromToken } from "mercadoliebre-domain";
+import { Result, getUserFromToken } from "marketplace-domain";
 import { container } from "../container.js";
 
 export async function jwtAuth(req: Request, res: Response, next: NextFunction) {

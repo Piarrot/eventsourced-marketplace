@@ -9,7 +9,7 @@ import {
     ICryptoProvider,
     ITimeProvider,
     IUsersStore,
-} from "mercadoliebre-domain";
+} from "marketplace-domain";
 import { ILogger } from "./providers/logger.js";
 import { ConsoleLogger } from "./providers/impl/logger.js";
 import { MemoryEventStore } from "./providers/impl/memory-event-store.js";

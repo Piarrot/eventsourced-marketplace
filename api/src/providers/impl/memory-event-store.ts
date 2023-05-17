@@ -1,4 +1,4 @@
-import { Event, IEventStore } from "mercadoliebre-domain";
+import { Event, IEventStore } from "marketplace-domain";
 import { MaybePromise } from "@ulthar/typey";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";

@@ -1,4 +1,4 @@
-import { DOMAIN_ERRORS } from "mercadoliebre-domain";
+import { DOMAIN_ERRORS } from "marketplace-domain";
 import { ErrorDefinition } from "./utils/api-boundary.js";
 
 export const ErrorMap: Record<DOMAIN_ERRORS, ErrorDefinition> = {

@@ -3778,6 +3778,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"event-sourced-marketplace@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "event-sourced-marketplace@workspace:."
+  dependencies:
+    "@types/jest": ^29.5.1
+    "@types/node": ^20.1.0
+    jest: ^29.5.0
+    prettier: ^2.8.8
+    ts-jest: ^29.1.0
+    typescript: ^5.0.4
+  languageName: unknown
+  linkType: soft
+
 "execa@npm:^5.0.0":
   version: 5.1.1
   resolution: "execa@npm:5.1.1"
@@ -4000,25 +4013,6 @@ __metadata:
   checksum: 13ea8b08f91e669a64e3ba3a20eb79d7ca5379a81f1ff7f4310d54e2320645503cc0c78daedc93dfb6191287295f6479544a649c64d8e41a1c0fb0c221552346
   languageName: node
   linkType: hard
-
-"frontend@workspace:frontend":
-  version: 0.0.0-use.local
-  resolution: "frontend@workspace:frontend"
-  dependencies:
-    "@types/react": ^18.0.28
-    "@types/react-dom": ^18.0.11
-    "@typescript-eslint/eslint-plugin": ^5.57.1
-    "@typescript-eslint/parser": ^5.57.1
-    "@vitejs/plugin-react": ^4.0.0
-    eslint: ^8.38.0
-    eslint-plugin-react-hooks: ^4.6.0
-    eslint-plugin-react-refresh: ^0.3.4
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    typescript: ^5.0.2
-    vite: ^4.3.2
-  languageName: unknown
-  linkType: soft
 
 "fs-minipass@npm:^2.0.0, fs-minipass@npm:^2.1.0":
   version: 2.1.0
@@ -5253,16 +5247,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"media-typer@npm:0.3.0":
-  version: 0.3.0
-  resolution: "media-typer@npm:0.3.0"
-  checksum: af1b38516c28ec95d6b0826f6c8f276c58aec391f76be42aa07646b4e39d317723e869700933ca6995b056db4b09a78c92d5440dc23657e6764be5d28874bba1
-  languageName: node
-  linkType: hard
-
-"mercadoliebre-api@workspace:api":
+"marketplace-api@workspace:api":
   version: 0.0.0-use.local
-  resolution: "mercadoliebre-api@workspace:api"
+  resolution: "marketplace-api@workspace:api"
   dependencies:
     "@aws-sdk/client-s3": ^3.332.0
     "@types/bcryptjs": ^2.4.2
@@ -5275,16 +5262,16 @@ __metadata:
     bcryptjs: ^2.4.3
     express: ^4.18.2
     jsonwebtoken: ^9.0.0
-    mercadoliebre-domain: "workspace:^"
+    marketplace-domain: "workspace:^"
     morgan: ^1.10.0
     ts-node: ^10.9.1
     typescript: ^5.0.4
   languageName: unknown
   linkType: soft
 
-"mercadoliebre-domain@workspace:^, mercadoliebre-domain@workspace:domain":
+"marketplace-domain@workspace:^, marketplace-domain@workspace:domain":
   version: 0.0.0-use.local
-  resolution: "mercadoliebre-domain@workspace:domain"
+  resolution: "marketplace-domain@workspace:domain"
   dependencies:
     "@types/jest": "npm:^29.5.1"
     jest: "npm:^29.5.0"
@@ -5293,18 +5280,31 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"mercadoliebre-event-sourced@workspace:.":
+"marketplace-frontend@workspace:frontend":
   version: 0.0.0-use.local
-  resolution: "mercadoliebre-event-sourced@workspace:."
+  resolution: "marketplace-frontend@workspace:frontend"
   dependencies:
-    "@types/jest": ^29.5.1
-    "@types/node": ^20.1.0
-    jest: ^29.5.0
-    prettier: ^2.8.8
-    ts-jest: ^29.1.0
-    typescript: ^5.0.4
+    "@types/react": ^18.0.28
+    "@types/react-dom": ^18.0.11
+    "@typescript-eslint/eslint-plugin": ^5.57.1
+    "@typescript-eslint/parser": ^5.57.1
+    "@vitejs/plugin-react": ^4.0.0
+    eslint: ^8.38.0
+    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-react-refresh: ^0.3.4
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    typescript: ^5.0.2
+    vite: ^4.3.2
   languageName: unknown
   linkType: soft
+
+"media-typer@npm:0.3.0":
+  version: 0.3.0
+  resolution: "media-typer@npm:0.3.0"
+  checksum: af1b38516c28ec95d6b0826f6c8f276c58aec391f76be42aa07646b4e39d317723e869700933ca6995b056db4b09a78c92d5440dc23657e6764be5d28874bba1
+  languageName: node
+  linkType: hard
 
 "merge-descriptors@npm:1.0.1":
   version: 1.0.1

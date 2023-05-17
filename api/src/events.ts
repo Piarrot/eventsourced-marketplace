@@ -1,4 +1,4 @@
-import { EVENTS, EventApplyMap } from "mercadoliebre-domain";
+import { EVENTS, EventApplyMap } from "marketplace-domain";
 import { Dependencies, container } from "./container.js";
 
 export function subscribeEventAppliers() {

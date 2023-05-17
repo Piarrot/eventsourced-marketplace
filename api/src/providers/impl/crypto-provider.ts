@@ -1,9 +1,4 @@
-import {
-    ICryptoProvider,
-    JWTPayload,
-    Result,
-    User,
-} from "mercadoliebre-domain";
+import { ICryptoProvider, JWTPayload, Result, User } from "marketplace-domain";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import bcrypt from "bcryptjs";

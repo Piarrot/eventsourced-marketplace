@@ -8,7 +8,7 @@ import {
     ITimeProvider,
     IUsersProvider,
     IUsersStore,
-} from "mercadoliebre-domain";
+} from "marketplace-domain";
 
 export type Dependencies = {
     logger: ILogger;

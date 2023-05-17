@@ -1,8 +1,4 @@
-import {
-    IProductsProvider,
-    IProductsStore,
-    Product,
-} from "mercadoliebre-domain";
+import { IProductsProvider, IProductsStore, Product } from "marketplace-domain";
 
 export class ProductsProvider implements IProductsProvider, IProductsStore {
     private products: Record<string, Product> = {};

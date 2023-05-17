@@ -5,7 +5,7 @@ import {
     FailureResponse,
     MESSAGES,
     ResultRecord,
-} from "mercadoliebre-domain";
+} from "marketplace-domain";
 import { Request, Response, Express } from "express";
 import { container } from "../container.js";
 import { authGuard } from "../middlewares/auth-guard.js";
