@@ -1,9 +1,8 @@
+import { Home } from "./pages/home.tsx";
+import "./styles.css";
+
 function App() {
-    return (
-        <>
-            <div></div>
-        </>
-    );
+    return <Home />;
 }
 
 export default App;

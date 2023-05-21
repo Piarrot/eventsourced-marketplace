@@ -16,6 +16,7 @@ export interface ProductListResponseModel {
     lastUpdate?: number;
 
     categories: string[];
+    mainImage: string;
     ownerId: string;
 }
 
@@ -35,5 +36,6 @@ export const productListTransformer: ResponseTransformer<
         lastUpdate: product.lastUpdate,
         categories: product.categoryIds,
         ownerId: product.ownerId,
+        mainImage: product.images[0],
     }));
 };
