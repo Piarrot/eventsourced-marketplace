@@ -7,6 +7,23 @@
     background-color: transparent;
 }
 
+/* #2e4057, #af90a9, #66ced6, #adfc92, #9c0d38 */
+
+:root {
+    --primary-900: #1e2329;
+    --primary-400: #6e7279;
+    --primary-200: #d2d3d4;
+
+    --accent-900: #2cb000;
+    --accent-200: #ffeaea;
+
+    --light: #fff;
+    --dark: #1e2329;
+
+    --body-font: "Montserrat", sans-serif;
+    --heading-font: "Montserrat", sans-serif;
+}
+
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--body-font);
 }
