@@ -9,21 +9,22 @@ const CardContainer = styled.article({
     padding: "0 1rem 1rem",
     border: "1px solid #ccc",
     borderRadius: "5px",
-    width: "200px",
+    width: "300px",
     overflow: "hidden",
+    boxShadow: "0 0 5px 0 rgba(0,0,0,0.5)",
     "&:hover": {
-        boxShadow: "0 0 5px 0 rgba(0,0,0,0.5)",
+        boxShadow: "0 0 10px 0 rgba(0,0,0,0.8)",
         cursor: "pointer",
     },
 });
 
 const ImageContainer = styled.div({
-    width: "200px",
-    height: "200px",
+    width: "300px",
+    height: "300px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "var(--primary-400)",
+    backgroundColor: "var(--gray)",
     marginBottom: "1rem",
 });
 
@@ -42,7 +43,7 @@ export function ProductCard({ product }: ProductCardProps) {
                     alt={product.name}
                 />
             </ImageContainer>
-            <h3>{product.name}</h3>
+            <h3 style={{ width: "100%" }}>{product.name}</h3>
             <ProductPrice price={product.price} discount={product.discount} />
         </CardContainer>
     );

@@ -4,7 +4,7 @@ export function Header() {
             style={{
                 width: "100%",
                 height: "100px",
-                backgroundColor: "var(--accent-900)",
+                backgroundColor: "var(--accent)",
             }}
         >
             <h2>Header</h2>

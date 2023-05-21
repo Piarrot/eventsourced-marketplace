@@ -4,10 +4,11 @@ import { Header } from "../components/header.tsx";
 import { Offers } from "../components/offers.tsx";
 import { PopularCategories } from "../components/popular-categories.tsx";
 import { ShopsForYou } from "../components/shops-for-you.tsx";
+import { PageContainer } from "../utils/page-container.tsx";
 
 export function Home() {
     return (
-        <>
+        <PageContainer>
             <Header />
             <main
                 style={{
@@ -20,6 +21,6 @@ export function Home() {
                 <PopularCategories />
             </main>
             <Footer />
-        </>
+        </PageContainer>
     );
 }

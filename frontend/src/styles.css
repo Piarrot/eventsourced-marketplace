@@ -10,14 +10,12 @@
 /* #2e4057, #af90a9, #66ced6, #adfc92, #9c0d38 */
 
 :root {
-    --primary-900: #1e2329;
-    --primary-400: #6e7279;
-    --primary-200: #d2d3d4;
-
-    --accent-900: #2cb000;
-    --accent-200: #ffeaea;
+    --primary: #2e4057;
+    --accent: #ff9494;
+    --success: #2cb000;
 
     --light: #fff;
+    --gray: #6e7279;
     --dark: #1e2329;
 
     --body-font: "Montserrat", sans-serif;

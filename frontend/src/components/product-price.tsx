@@ -1,6 +1,6 @@
 import { calculatePriceWithDiscount } from "marketplace-domain";
 import styled from "styled-components";
-import { FlexContainer } from "../utils/components.tsx";
+import { FlexContainer } from "../utils/flex-container.tsx";
 
 type Props = {
     price: number;
@@ -17,13 +17,13 @@ const PriceContainer = styled.div({
 
 const CrossedOutPrice = styled.span({
     textDecoration: "line-through",
-    color: "var(--primary-200)",
+    color: "var(--gray)",
 });
 
 const Discount = styled.span({
     fontWeight: "bold",
     fontSize: "1.2rem",
-    color: "var(--accent-900)",
+    color: "var(--success)",
 });
 
 const RealPrice = styled.span({
@@ -35,9 +35,15 @@ export function ProductPrice({ price, discount }: Props) {
     const finalPriceStr = calculatePriceWithDiscount(
         price,
         discount
-    ).toLocaleString();
+    ).toLocaleString("es-AR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
 
-    const priceStr = price.toLocaleString();
+    const priceStr = price.toLocaleString("es-AR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
 
     if (discount === 0) {
         return (
