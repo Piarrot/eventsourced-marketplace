@@ -7,13 +7,13 @@ import {
     parseLoginCredentials,
     parseRegisterUserPayload,
     parseUpdateProductPayload,
-} from "../index.js";
-import { CreateProductUseCase } from "../use-cases/products/create-product.js";
-import { ListOwnProductsUseCase } from "../use-cases/products/list-own-products.js";
-import { UpdateProductUseCase } from "../use-cases/products/update-product.js";
-import { LoginUserUseCase } from "../use-cases/users/login-user.js";
-import { RegisterUserUseCase } from "../use-cases/users/register-user.js";
-import { PayloadParser } from "../utils/payload-parser.js";
+} from "./index.js";
+import { CreateProductUseCase } from "./use-cases/products/create-product.js";
+import { ListOwnProductsUseCase } from "./use-cases/products/list-own-products.js";
+import { UpdateProductUseCase } from "./use-cases/products/update-product.js";
+import { LoginUserUseCase } from "./use-cases/users/login-user.js";
+import { RegisterUserUseCase } from "./use-cases/users/register-user.js";
+import { PayloadParser } from "./utils/payload-parser.js";
 
 export type MESSAGES =
     | "USER_REGISTER_COMMAND"
@@ -25,6 +25,7 @@ export type MESSAGES =
 export type BoundaryHandler = {
     parser?: PayloadParser<any>;
     handler: DomainUseCase<any, any, any, DOMAIN_ERRORS>;
+    requiresAuth?: boolean;
 };
 
 export const BOUNDARY_HANDLERS: Record<MESSAGES, BoundaryHandler> = {
@@ -39,12 +40,15 @@ export const BOUNDARY_HANDLERS: Record<MESSAGES, BoundaryHandler> = {
     PRODUCT_CREATE_COMMAND: {
         parser: parseCreateProductPayload,
         handler: CreateProductUseCase,
+        requiresAuth: true,
     },
     PRODUCT_UPDATE_COMMAND: {
         parser: parseUpdateProductPayload,
         handler: UpdateProductUseCase,
+        requiresAuth: true,
     },
     LIST_OWN_PRODUCTS_QUERY: {
         handler: ListOwnProductsUseCase,
+        requiresAuth: true,
     },
 };

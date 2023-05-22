@@ -8,4 +8,4 @@ export * from "./request-models/index.js";
 export * from "./response-models/index.js";
 export * from "./use-cases/index.js";
 export * from "./utils/index.js";
-export * from "./boundary/index.js";
+export * from "./boundary.js";

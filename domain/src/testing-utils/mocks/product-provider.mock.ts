@@ -4,6 +4,9 @@ import { IProductsStore } from "../../providers/products-store.js";
 import { deepClone } from "../../utils/cloning/index.js";
 
 export class ProductProviderMock implements IProductsProvider, IProductsStore {
+    async getAll(): Promise<Product[]> {
+        return deepClone(this.products);
+    }
     async getProductsByOwner(ownerId: string) {
         return deepClone(this.products.filter((p) => p.ownerId === ownerId));
     }
