@@ -11,7 +11,7 @@
 
 :root {
     --primary: #2e4057;
-    --accent: #ff9494;
+    --accent: #ff7777;
     --success: #2cb000;
 
     --light: #fff;
@@ -24,4 +24,14 @@
 
 body {
     font-family: var(--body-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font);
+    font-size: 1em;
 }

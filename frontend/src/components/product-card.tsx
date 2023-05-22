@@ -2,6 +2,8 @@ import { ProductListResponseModel } from "marketplace-domain";
 import { ProductPrice } from "./product-price.tsx";
 import { styled } from "styled-components";
 
+export const CardWidth = "160px";
+
 const CardContainer = styled.article({
     display: "flex",
     flexDirection: "column",
@@ -9,7 +11,7 @@ const CardContainer = styled.article({
     padding: "0 1rem 1rem",
     border: "1px solid #ccc",
     borderRadius: "5px",
-    width: "300px",
+    width: CardWidth,
     overflow: "hidden",
     boxShadow: "0 0 5px 0 rgba(0,0,0,0.5)",
     "&:hover": {
@@ -19,8 +21,8 @@ const CardContainer = styled.article({
 });
 
 const ImageContainer = styled.div({
-    width: "300px",
-    height: "300px",
+    width: CardWidth,
+    height: CardWidth,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -43,7 +45,7 @@ export function ProductCard({ product }: ProductCardProps) {
                     alt={product.name}
                 />
             </ImageContainer>
-            <h3 style={{ width: "100%" }}>{product.name}</h3>
+            <h3 style={{ width: "100%", fontSize: "1em" }}>{product.name}</h3>
             <ProductPrice price={product.price} discount={product.discount} />
         </CardContainer>
     );

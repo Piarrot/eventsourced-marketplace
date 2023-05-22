@@ -22,13 +22,13 @@ const CrossedOutPrice = styled.span({
 
 const Discount = styled.span({
     fontWeight: "bold",
-    fontSize: "1.2rem",
+    fontSize: "0.8em",
     color: "var(--success)",
 });
 
 const RealPrice = styled.span({
     fontWeight: "bold",
-    fontSize: "1.5rem",
+    fontSize: "0.9em",
 });
 
 export function ProductPrice({ price, discount }: Props) {
