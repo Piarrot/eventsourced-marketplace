@@ -1,13 +1,13 @@
 import { EVENTS, EventApplyMap } from "marketplace-domain";
-import { Dependencies, container } from "./container.js";
+import { container } from "./container.js";
 
 export function subscribeEventAppliers() {
     const context = container.getPlainDependencyMap();
     for (const eventType in EventApplyMap) {
-        const element = EventApplyMap[eventType as EVENTS];
-        if (element) {
+        const eventApplyFunc = EventApplyMap[eventType as EVENTS];
+        if (eventApplyFunc) {
             context.events.subscribe(eventType, async (evt) => {
-                await element(evt, context);
+                await eventApplyFunc(evt, context);
             });
         }
     }

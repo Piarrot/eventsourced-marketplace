@@ -1,5 +1,5 @@
 import { DOMAIN_ERRORS } from "marketplace-domain";
-import { ErrorDefinition } from "./utils/api-boundary.js";
+import { ErrorDefinition } from "./utils/wrap-error-response.js";
 
 export const ErrorMap: Record<DOMAIN_ERRORS, ErrorDefinition> = {
     EMAIL_ALREADY_REGISTERED: {

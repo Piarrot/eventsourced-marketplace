@@ -17,6 +17,9 @@ export class ProductsProvider implements IProductsProvider, IProductsStore {
         this.products[product.id] = product;
         return Promise.resolve();
     }
+    getAll(): Promise<Product[]> {
+        return Promise.resolve(Object.values(this.products));
+    }
     update(
         productId: string,
         productMutation: Partial<Omit<Product, "id">>

@@ -1,13 +1,12 @@
 import express, { json } from "express";
 import morgan from "morgan";
 
-import { defineHTTPBoundaryRoutes } from "./utils/api-boundary.js";
-import { RouterMap } from "./routes.js";
-import { ErrorMap } from "./errors.js";
 import { container } from "./container.js";
 import { dependencies } from "./dependencies.js";
 import { subscribeEventAppliers } from "./events.js";
 import { jwtAuth } from "./middlewares/jwt-auth.js";
+
+import Router from "./routes/index.js";
 
 (async () => {
     const app = express();
@@ -27,7 +26,7 @@ import { jwtAuth } from "./middlewares/jwt-auth.js";
 
     await container.dependencies.events.current!.rebuildState();
 
-    defineHTTPBoundaryRoutes(app, RouterMap, ErrorMap);
+    app.use(Router);
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT);
