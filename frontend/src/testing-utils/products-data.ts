@@ -7,7 +7,7 @@ export const products: Array<ProductListResponseModel> = Array.from(
         name: `Product ${i}`,
         description: `Description ${i}`,
         price: Math.random() * 1000,
-        mainImage: `https://picsum.photos/seed/${i}/300/300`,
+        mainImage: `https://picsum.photos/seed/${i}/300/200`,
         categories: [],
         createdAt: Date.now(),
         discount: Math.floor(Math.random() * 99),

@@ -1,5 +1,5 @@
-import { Footer } from "../components/footer.tsx";
-import { Header } from "../components/header.tsx";
+import { Footer } from "../components/footer/footer.tsx";
+import { Header } from "../components/header/header.tsx";
 import { Offers } from "../components/offers.tsx";
 // import { PopularCategories } from "../components/popular-categories.tsx";
 // import { ShopsForYou } from "../components/shops-for-you.tsx";
@@ -9,11 +9,7 @@ export function Home() {
     return (
         <PageContainer>
             <Header />
-            <main
-                style={{
-                    flex: "1 0 auto",
-                }}
-            >
+            <main className="mb-20 flex-1 lg:mb-0">
                 {/* <Banner /> */}
                 <Offers />
                 {/* <ShopsForYou /> */}
