@@ -1,25 +1,16 @@
 import { ProductListResponseModel } from "marketplace-domain";
-import { CardWidth, ProductCard } from "./product-card.tsx";
-import styled from "styled-components";
+import { ProductCard } from "./product-card.tsx";
 
 type Props = {
     products: ProductListResponseModel[];
 };
 
-const CardGridContainer = styled.div({
-    display: "grid",
-    gridTemplateColumns: `repeat(auto-fill, minmax(${CardWidth}, 1fr))`,
-    columnGap: "20px",
-    justifyItems: "center",
-    rowGap: "20px",
-    padding: "20px",
-});
 export function ProductList({ products }: Props) {
     return (
-        <CardGridContainer>
+        <div className="grid grid-cols-2 justify-items-center gap-4 p-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {products.map((product) => {
                 return <ProductCard key={product.id} product={product} />;
             })}
-        </CardGridContainer>
+        </div>
     );
 }

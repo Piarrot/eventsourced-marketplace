@@ -1,11 +1,9 @@
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Icon } from "./common/icons/icon.tsx";
 
 export function Spinner() {
     return (
-        <FontAwesomeIcon
-            icon={faCircleNotch}
-            spin
+        <Icon
+            className="fa-circle-notch fa-spin"
             style={
                 {
                     fontSize: "2em",

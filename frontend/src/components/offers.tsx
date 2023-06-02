@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { container } from "../container.ts";
 import { ProductListResponseModel } from "marketplace-domain";
-import { ProductList } from "./product-list.tsx";
-import { Spinner } from "./spinner.tsx";
+import { container } from "../container.js";
+import { Spinner } from "./spinner.js";
+import { ProductList } from "./product-list.js";
 
 export function Offers() {
     const [offers, setOffers] = useState<ProductListResponseModel[]>([]);
