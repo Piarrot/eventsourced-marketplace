@@ -1,6 +1,6 @@
 import { BoundaryHandler, DOMAIN_ERRORS } from "marketplace-domain";
 import { Request, Response } from "express";
-import { container } from "../container.js";
+import { dependencyContainer } from "../container.js";
 import { ErrorDefinition, wrapErrorResponse } from "./wrap-error-response.js";
 import { wrapParsingError } from "./wrap-parsing-error.js";
 
@@ -15,7 +15,7 @@ export function wrapBoundaryHandler(
 ) {
     return async (req: Request, res: Response) => {
         const appContext = {
-            ...container.getPlainDependencyMap(),
+            ...dependencyContainer,
             ...res.locals.currentUser,
         };
         try {

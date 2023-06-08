@@ -1,11 +1,12 @@
 import { Event, IEventStore } from "marketplace-domain";
-import { MaybePromise } from "@ulthar/typey";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 const filePath = join(__dirname, "../../../data/events.json");
+
+type MaybePromise<T> = T | Promise<T>;
 
 export class MemoryEventStore implements IEventStore {
     private events: Event<string, any>[] = [];

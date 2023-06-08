@@ -1,4 +1,3 @@
-import { Container } from "@ulthar/deppy";
 import { ILogger } from "./providers/logger.js";
 import {
     ICryptoProvider,
@@ -19,4 +18,4 @@ export type Dependencies = {
     time: ITimeProvider;
 };
 
-export const container = new Container<Dependencies>();
+export const dependencyContainer = {} as Dependencies;

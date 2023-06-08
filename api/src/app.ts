@@ -1,8 +1,8 @@
 import express, { json } from "express";
 import morgan from "morgan";
 
-import { container } from "./container.js";
-import { dependencies } from "./dependencies.js";
+import { dependencyContainer } from "./container.js";
+import { registerDependencies } from "./dependencies.js";
 import { subscribeEventAppliers } from "./events.js";
 import { jwtAuth } from "./middlewares/jwt-auth.js";
 
@@ -20,11 +20,11 @@ import Router from "./routes/index.js";
 
     app.use(jwtAuth);
 
-    await container.registerAll(dependencies);
+    registerDependencies();
 
     subscribeEventAppliers();
 
-    await container.dependencies.events.current!.rebuildState();
+    await dependencyContainer.events.rebuildState();
 
     app.use(Router);
 
