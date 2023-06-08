@@ -1,4 +1,7 @@
+import type { StoryDefault } from "@ladle/react";
 import { ProductListResponseModel } from "marketplace-domain";
+import { products } from "../testing-utils/products-data.js";
+import { StoryWithPadding } from "../testing-utils/story-utils.js";
 import { ProductCard } from "./product-card.js";
 
 const productWithoutDiscount = {
@@ -11,12 +14,8 @@ const productWithDiscount: ProductListResponseModel = {
     discount: 10,
 };
 
-import type { StoryDefault } from "@ladle/react";
-import { StoryPadding } from "../testing-utils/story-utils.js";
-import { products } from "../testing-utils/products-data.js";
-
 export default {
-    decorators: [StoryPadding],
+    decorators: [StoryWithPadding],
 } satisfies StoryDefault;
 
 export const BasicProductCard = () => (

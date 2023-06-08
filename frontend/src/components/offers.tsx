@@ -1,21 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductListResponseModel } from "marketplace-domain";
-import { container } from "../container.js";
 import { Spinner } from "./spinner.js";
 import { ProductList } from "./product-list.js";
+import { FetchContext } from "../contexts/fetch-context.js";
 
 export function Offers() {
     const [offers, setOffers] = useState<ProductListResponseModel[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
+    const fetcher = useContext(FetchContext);
+
     useEffect(() => {
-        container
-            .resolve("endpointFetcher")
-            .getOffers()
-            .then((offers) => {
-                setOffers(offers);
-                setLoading(false);
-            });
+        fetcher.getOffers().then((offers) => {
+            setOffers(offers);
+            setLoading(false);
+        });
     }, []);
 
     return (

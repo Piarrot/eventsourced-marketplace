@@ -1,19 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.js";
-import { container } from "./container.js";
 import { products } from "./testing-utils/products-data.js";
-import { AuthServiceProvider } from "./providers/impl/auth-service.js";
+import { AuthProvider } from "./contexts/auth-context.js";
+import { FetchProvider } from "./contexts/fetch-context.js";
+import { AuthContextImpl } from "./contexts/impl/auth-service.js";
 
-container.registerAll({
-    authServiceProvider: () => new AuthServiceProvider(),
-    endpointFetcher: () => ({
-        getOffers: () => Promise.resolve(products),
-    }),
-});
+const authContext = new AuthContextImpl();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <App />
+        <FetchProvider
+            value={{
+                getOffers: () => Promise.resolve(products),
+            }}
+        >
+            <AuthProvider value={authContext}>
+                <App />
+            </AuthProvider>
+        </FetchProvider>
     </React.StrictMode>
 );

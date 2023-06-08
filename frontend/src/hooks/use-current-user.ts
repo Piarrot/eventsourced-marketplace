@@ -1,20 +1,7 @@
-import { useEffect, useState } from "react";
-import { container } from "../container.ts";
-import { UserResponseModel } from "marketplace-domain";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/auth-context.ts";
 
 export function useCurrentUser() {
-    const [currentUser, setCurrentUser] = useState<UserResponseModel | null>(
-        null
-    );
-
-    useEffect(() => {
-        container
-            .resolve("authServiceProvider")
-            .currentUser()
-            .subscribe((user) => {
-                setCurrentUser(user);
-            });
-    });
-
+    const { currentUser } = useContext(AuthContext);
     return currentUser;
 }

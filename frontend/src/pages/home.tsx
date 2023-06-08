@@ -1,9 +1,9 @@
+import { PageContainer } from "../components/common/page-container.tsx";
 import { Footer } from "../components/footer/footer.tsx";
 import { Header } from "../components/header/header.tsx";
 import { Offers } from "../components/offers.tsx";
 // import { PopularCategories } from "../components/popular-categories.tsx";
 // import { ShopsForYou } from "../components/shops-for-you.tsx";
-import { PageContainer } from "../utils/page-container.tsx";
 
 export function Home() {
     return (

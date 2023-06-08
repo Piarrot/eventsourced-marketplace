@@ -1,29 +1,44 @@
 import { StoryDefault } from "@ladle/react";
-import { container } from "../container.ts";
 import { products } from "../testing-utils/products-data.ts";
+import { StoryWithPadding } from "../testing-utils/story-utils.tsx";
 import { Offers } from "./offers.tsx";
-import { StoryPadding } from "../testing-utils/story-utils.tsx";
+import { FetchProvider } from "../contexts/fetch-context.ts";
 
 export default {
-    decorators: [StoryPadding],
+    decorators: [StoryWithPadding],
 } satisfies StoryDefault;
 
 export const FetchingOffers = () => {
-    container.register("endpointFetcher", {
-        getOffers: () => new Promise(() => {}),
-    });
-    return <Offers />;
+    return (
+        <FetchProvider
+            value={{
+                getOffers: () => new Promise(() => {}),
+            }}
+        >
+            <Offers />
+        </FetchProvider>
+    );
 };
 
 export const EmptyOffers = () => {
-    container.register("endpointFetcher", {
-        getOffers: () => Promise.resolve([]),
-    });
-    return <Offers />;
+    return (
+        <FetchProvider
+            value={{
+                getOffers: () => Promise.resolve([]),
+            }}
+        >
+            <Offers />
+        </FetchProvider>
+    );
 };
 export const ResolvedOffers = () => {
-    container.register("endpointFetcher", {
-        getOffers: () => Promise.resolve(products),
-    });
-    return <Offers />;
+    return (
+        <FetchProvider
+            value={{
+                getOffers: () => Promise.resolve(products),
+            }}
+        >
+            <Offers />
+        </FetchProvider>
+    );
 };

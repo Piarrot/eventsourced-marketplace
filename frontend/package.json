@@ -10,8 +10,6 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@ulthar/deppy": "^0.1.2",
-        "@ulthar/typey": "^0.1.3",
         "marketplace-domain": "workspace:^",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
